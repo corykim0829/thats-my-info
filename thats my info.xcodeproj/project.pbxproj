@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22EF86D8CB668A8FF637D3FF /* Pods_thats_my_infoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C0DF2E839B8648318DBAFE /* Pods_thats_my_infoUITests.framework */; };
 		381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381F6C9E2302A1F000682EE7 /* HomeController.swift */; };
+		381F6CA12302A94800682EE7 /* HomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381F6CA02302A94800682EE7 /* HomeStackView.swift */; };
 		38511382230006C3009998AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38511381230006C3009998AF /* AppDelegate.swift */; };
 		38511384230006C3009998AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38511383230006C3009998AF /* ViewController.swift */; };
 		38511387230006C3009998AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38511385230006C3009998AF /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		202FCBC625422CB99F200978 /* Pods-thats my info.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thats my info.release.xcconfig"; path = "Target Support Files/Pods-thats my info/Pods-thats my info.release.xcconfig"; sourceTree = "<group>"; };
 		381F6C9E2302A1F000682EE7 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		381F6CA02302A94800682EE7 /* HomeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStackView.swift; sourceTree = "<group>"; };
 		3851137E230006C3009998AF /* thats my info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "thats my info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38511381230006C3009998AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38511383230006C3009998AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		381F6C9D2302A1D200682EE7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				381F6CA02302A94800682EE7 /* HomeStackView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381F6CA12302A94800682EE7 /* HomeStackView.swift in Sources */,
 				38511384230006C3009998AF /* ViewController.swift in Sources */,
 				38511382230006C3009998AF /* AppDelegate.swift in Sources */,
 				381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */,
