@@ -20,3 +20,4 @@ git flow
 
 ### Key Color
 
+`#22B1F6`
