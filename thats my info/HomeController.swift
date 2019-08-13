@@ -52,7 +52,7 @@ class HomeController: UIViewController {
     }
 
     fileprivate func setupUI() {
-        view.backgroundColor = #colorLiteral(red: 0.1333775818, green: 0.6924566031, blue: 0.9647538066, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
         
         view.addSubview(titlelabel)
         titlelabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 24, left: 0, bottom: 0, right: 0))

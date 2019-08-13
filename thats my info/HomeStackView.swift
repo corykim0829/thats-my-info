@@ -16,24 +16,36 @@ class HomeStackView: UIView {
     
     fileprivate func createButton(image: UIImage, title: String, titleFontSize: CGFloat, value: CGFloat) -> UIButton {
         let button = UIButton(type: .system)
+        let label: UILabel
         button.backgroundColor = .white
-        button.setupShadow(opacity: 0.4, radius: 32, offset: .init(width: 16, height: 16), color: .gray)
+        button.setupShadow(opacity: 0.3, radius: 32, offset: .init(width: 16, height: 16), color: .gray)
         button.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
-        if value > subButtonsValue {
-            button.imageView?.withSize(.init(width: 126, height: 126))
-        } else {
-            button.imageView?.withSize(.init(width: 64, height: 64))
-        }
         button.constrainWidth(value)
         button.constrainHeight(value)
         button.layer.cornerRadius = 24
+        
+        if value > subButtonsValue {
+            button.imageView?.withSize(.init(width: 126, height: 126))
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 32)
+            label = UILabel(text: title, font: .systemFont(ofSize: 24, weight: .bold), textColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1), textAlignment: .center, numberOfLines: 1)
+            button.addSubview(label)
+            label.anchor(top: button.imageView?.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+            label.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
+        } else {
+            button.imageView?.withSize(.init(width: 56, height: 56))
+            label = UILabel(text: title, font: .systemFont(ofSize: 12, weight: .heavy), textColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1), textAlignment: .center, numberOfLines: 1)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+            button.addSubview(label)
+            label.anchor(top: button.imageView?.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 8, left: 0, bottom: 0, right: 0))
+            label.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
+        }
         return button
     }
     
     lazy var toDetectButton = createButton(image: #imageLiteral(resourceName: "detect@100"), title: "내 개인정보 탐색", titleFontSize: 16, value: detectButtonValue)
-    lazy var toReportButton = createButton(image: #imageLiteral(resourceName: "report"), title: "개인정보 불법 신고", titleFontSize: 16, value: subButtonsValue)
-    lazy var toDocumentButton = createButton(image: #imageLiteral(resourceName: "knowledge"), title: "개인정보 불법 신고", titleFontSize: 16, value: subButtonsValue)
+    lazy var toReportButton = createButton(image: #imageLiteral(resourceName: "24-hours-phone-service"), title: "개인정보 불법 신고", titleFontSize: 16, value: subButtonsValue)
+    lazy var toDocumentButton = createButton(image: #imageLiteral(resourceName: "privacy"), title: "개인정보 관련 지식", titleFontSize: 16, value: subButtonsValue)
     
     lazy var buttonsStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
@@ -42,7 +54,7 @@ class HomeStackView: UIView {
             ])
         sv.axis = .horizontal
         sv.distribution = .fillEqually
-        sv.spacing = 8
+        sv.spacing = 12
         return sv
     }()
     
@@ -52,13 +64,12 @@ class HomeStackView: UIView {
             buttonsStackView])
         sv.axis = .vertical
         sv.distribution = .fill
-        sv.spacing = 8
+        sv.spacing = 12
         return sv
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
     }
     
