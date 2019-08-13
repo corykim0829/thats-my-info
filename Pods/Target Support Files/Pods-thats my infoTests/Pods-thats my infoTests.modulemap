@@ -1,0 +1,6 @@
+framework module Pods_thats_my_infoTests {
+  umbrella header "Pods-thats my infoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

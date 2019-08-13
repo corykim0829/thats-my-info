@@ -1,0 +1,6 @@
+framework module Pods_thats_my_info {
+  umbrella header "Pods-thats my info-umbrella.h"
+
+  export *
+  module * { export * }
+}
