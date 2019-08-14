@@ -22,8 +22,7 @@ class HomeController: UIViewController {
     }
     
     @objc fileprivate func handleToReport() {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .purple
+        let controller = ReportController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
