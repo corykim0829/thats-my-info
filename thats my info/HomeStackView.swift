@@ -35,9 +35,9 @@ class HomeStackView: UIView {
         } else {
             button.imageView?.withSize(.init(width: 56, height: 56))
             label = UILabel(text: title, font: .systemFont(ofSize: 12, weight: .heavy), textColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1), textAlignment: .center, numberOfLines: 1)
-            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
             button.addSubview(label)
-            label.anchor(top: button.imageView?.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 8, left: 0, bottom: 0, right: 0))
+            label.anchor(top: button.imageView?.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 14, left: 0, bottom: 0, right: 0))
             label.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
         }
         return button
