@@ -17,7 +17,7 @@ class HomeController: UIViewController {
     
     @objc fileprivate func handleToDetect() {
         let controller = UIViewController()
-        controller.view.backgroundColor = .red
+        controller.view.backgroundColor = .yellow
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -28,9 +28,8 @@ class HomeController: UIViewController {
     }
     
     @objc fileprivate func handleToDocument() {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .yellow
-        navigationController?.pushViewController(controller, animated: true)
+        let documentController = DocumentController()
+        navigationController?.pushViewController(documentController, animated: true)
     }
 
     override func viewDidLoad() {
