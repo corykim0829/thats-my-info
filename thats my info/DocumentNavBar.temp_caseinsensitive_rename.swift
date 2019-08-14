@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CustomDocumentNavBar: UIView {
+class DocumentNavBar: UIView {
     
     fileprivate let titleFontSize: CGFloat = 24
-    
     fileprivate lazy var titleLabel = UILabel(text: "개인정보 관련 지식", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .white, textAlignment: .center, numberOfLines: 1)
+    let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +26,9 @@ class CustomDocumentNavBar: UIView {
             
         addSubview(titleLabel)
         titleLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 24, right: 0))
+        
+        addSubview(backButton)
+        backButton.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 0, left: 16, bottom: 24, right: 0), size: .init(width: 32, height: 32))
     }
     
     required init?(coder aDecoder: NSCoder) {
