@@ -19,6 +19,21 @@ class ReportController: UIViewController {
 
         setupUI()
         backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        reportStackView.call118Button.addTarget(self, action: #selector(handleCall118), for: .touchUpInside)
+    }
+    
+    @objc fileprivate func handleCall118() {
+        let numberOf118: String = "118"
+        let alert = UIAlertController(title: "해킹·스팸개인정보침해 신고", message: "전화 상담 및 원격점검 등을 통해 PC 악성코드 감염 예방 및 침해사고 피해 복구 지원합니다\n운영시간 : 연중무휴, 24시간", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        let callAction = UIAlertAction(title: "전화", style: .default) { (_) in
+            guard let number = URL(string: "tel://\(numberOf118)") else { return }
+            UIApplication.shared.open(number)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(callAction)
+        present(alert, animated: true)
     }
     
     @objc fileprivate func handleBack() {
