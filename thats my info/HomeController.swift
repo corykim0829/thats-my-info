@@ -16,9 +16,9 @@ class HomeController: UIViewController {
     let homeStackView = HomeStackView()
     
     @objc fileprivate func handleToDetect() {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .yellow
-        navigationController?.pushViewController(controller, animated: true)
+        let detectAuthController = DetectAuthController()
+        let navigationController = UINavigationController(rootViewController: detectAuthController)
+        present(navigationController, animated: true)
     }
     
     @objc fileprivate func handleToReport() {

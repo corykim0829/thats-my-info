@@ -26,6 +26,9 @@
 		3893924C2304838E00F14F64 /* ReportStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924B2304838E00F14F64 /* ReportStackView.swift */; };
 		38FC84C423082F8100C375AD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C323082F8100C375AD /* WebViewController.swift */; };
 		38FC84C7230832AE00C375AD /* ReportWebNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C6230832AE00C375AD /* ReportWebNavBar.swift */; };
+		38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C823096D9500C375AD /* DetectAuthController.swift */; };
+		38FC84CB23096F7400C375AD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84CA23096F7400C375AD /* UserInfo.swift */; };
+		38FC84CD230970AD00C375AD /* DetectNaverAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */; };
 		4F98630D377368BB22150161 /* Pods_thats_my_infoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA13A7BE5D554D9C8F323D69 /* Pods_thats_my_infoTests.framework */; };
 		E38CD3DF104698CA09CE20EF /* Pods_thats_my_info.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E27BC1C259360B7CE9BF98 /* Pods_thats_my_info.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +76,9 @@
 		3893924B2304838E00F14F64 /* ReportStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStackView.swift; sourceTree = "<group>"; };
 		38FC84C323082F8100C375AD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		38FC84C6230832AE00C375AD /* ReportWebNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportWebNavBar.swift; sourceTree = "<group>"; };
+		38FC84C823096D9500C375AD /* DetectAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectAuthController.swift; sourceTree = "<group>"; };
+		38FC84CA23096F7400C375AD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectNaverAuthController.swift; sourceTree = "<group>"; };
 		56C0DF2E839B8648318DBAFE /* Pods_thats_my_infoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thats_my_infoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		729E13B6EFC04F3FE52A19D4 /* Pods-thats my info.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thats my info.debug.xcconfig"; path = "Target Support Files/Pods-thats my info/Pods-thats my info.debug.xcconfig"; sourceTree = "<group>"; };
 		73D9C583E8281077DFBF8CEE /* Pods-thats my infoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thats my infoTests.debug.xcconfig"; path = "Target Support Files/Pods-thats my infoTests/Pods-thats my infoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				387E3D6C23041B8300F1D503 /* Document.swift */,
+				38FC84CA23096F7400C375AD /* UserInfo.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -122,6 +129,7 @@
 		381F6C9C2302A1CC00682EE7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				38FC84CE230970B000C375AD /* Detect */,
 				38FC84C523082F8700C375AD /* Report */,
 				381F6C9E2302A1F000682EE7 /* HomeController.swift */,
 				387E3D682304181900F1D503 /* DocumentController.swift */,
@@ -205,6 +213,15 @@
 				38FC84C323082F8100C375AD /* WebViewController.swift */,
 			);
 			name = Report;
+			sourceTree = "<group>";
+		};
+		38FC84CE230970B000C375AD /* Detect */ = {
+			isa = PBXGroup;
+			children = (
+				38FC84C823096D9500C375AD /* DetectAuthController.swift */,
+				38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */,
+			);
+			name = Detect;
 			sourceTree = "<group>";
 		};
 		5A7A0F9E7149AF433979A9D9 /* Pods */ = {
@@ -414,6 +431,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-thats my info/Pods-thats my info-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/LBTATools/LBTATools.framework",
 			);
@@ -421,6 +439,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBTATools.framework",
 			);
@@ -463,13 +482,16 @@
 				387E3D6B23041AE600F1D503 /* DocumentCell.swift in Sources */,
 				3893924423045B5A00F14F64 /* DocumentNavBar.swift in Sources */,
 				381F6CA12302A94800682EE7 /* HomeStackView.swift in Sources */,
+				38FC84CD230970AD00C375AD /* DetectNaverAuthController.swift in Sources */,
 				38511384230006C3009998AF /* ViewController.swift in Sources */,
 				38FC84C7230832AE00C375AD /* ReportWebNavBar.swift in Sources */,
 				38511382230006C3009998AF /* AppDelegate.swift in Sources */,
 				387E3D692304181900F1D503 /* DocumentController.swift in Sources */,
 				387E3D6D23041B8300F1D503 /* Document.swift in Sources */,
+				38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */,
 				381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */,
 				389392462304704500F14F64 /* CustomTextField.swift in Sources */,
+				38FC84CB23096F7400C375AD /* UserInfo.swift in Sources */,
 				3893924A23047CB700F14F64 /* ReportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

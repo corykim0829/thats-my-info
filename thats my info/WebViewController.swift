@@ -9,7 +9,9 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, WKNavigationDelegate {
+    
+    let indicatorView = UIActivityIndicatorView(style: .gray)
     
     var webView = WKWebView()
     var reportUrl = ""
@@ -31,14 +33,26 @@ class WebViewController: UIViewController {
 
         setupUI()
         
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        
         reportWebNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         
         if let url = URL(string: reportUrl) {
             let request = URLRequest(url: url)
             webView.load(request)
         }
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.navigationDelegate = self
+        
+        indicatorView.startAnimating()
+        indicatorView.hidesWhenStopped = true
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        indicatorView.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        indicatorView.stopAnimating()
     }
     
     @objc fileprivate func handleBack() {
@@ -56,6 +70,9 @@ class WebViewController: UIViewController {
         
         view.addSubview(webView)
         webView.anchor(top: reportWebNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        
+        view.addSubview(indicatorView)
+        indicatorView.centerInSuperview()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -9,6 +9,7 @@ target 'thats my info' do
 
   pod 'JGProgressHUD'
   pod 'LBTATools' 
+  pod 'Alamofire', '~> 4.4'
 
   target 'thats my infoTests' do
     inherit! :search_paths
