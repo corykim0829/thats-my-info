@@ -9,13 +9,23 @@
 import UIKit
 import WebKit
 
-class CollectionController: UIViewController {
+class WebViewController: UIViewController {
     
     var webView = WKWebView()
+    var reportUrl = ""
     
-    let collectionNavBar = CollectionNavBar()
+    var reportWebNavBar: ReportWebNavBar
+    
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
-
+    
+    init(url: String, title: String) {
+        reportWebNavBar = ReportWebNavBar(title: title)
+        
+        super.init(nibName: nil, bundle: nil)
+        reportUrl = url
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,10 +33,9 @@ class CollectionController: UIViewController {
         
         webView.translatesAutoresizingMaskIntoConstraints = false
         
-        collectionNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        reportWebNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         
-        let collectionReportUrl = "https://www.i-privacy.kr/jsp/user4/report/collect.jsp"
-        if let url = URL(string: collectionReportUrl) {
+        if let url = URL(string: reportUrl) {
             let request = URLRequest(url: url)
             webView.load(request)
         }
@@ -42,10 +51,14 @@ class CollectionController: UIViewController {
         view.addSubview(topToSafeAreaView)
         topToSafeAreaView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor)
         
-        view.addSubview(collectionNavBar)
-        collectionNavBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 48))
+        view.addSubview(reportWebNavBar)
+        reportWebNavBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 48))
         
         view.addSubview(webView)
-        webView.anchor(top: collectionNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        webView.anchor(top: reportWebNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

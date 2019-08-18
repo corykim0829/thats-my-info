@@ -8,13 +8,15 @@
 
 import LBTATools
 
-class CollectionNavBar: UIView {
+class ReportWebNavBar: UIView {
     
     let titleLabel = UILabel(text: "주민번호 불법수집신고", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
     let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal))
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(title: String) {
+        super.init(frame: .zero)
+        
+        titleLabel.text = title
         
         backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
         

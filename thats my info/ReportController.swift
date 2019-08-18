@@ -24,12 +24,27 @@ class ReportController: UIViewController {
     fileprivate func setuptButtonsTarget() {
         backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         reportStackView.call118Button.addTarget(self, action: #selector(handleCall118), for: .touchUpInside)
-        reportStackView.collectionButton.addTarget(self, action: #selector(handleToCollection), for: .touchUpInside)
+        [
+            reportStackView.infringementButton,
+            reportStackView.feudButton,
+            reportStackView.leakButton,
+            reportStackView.collectionButton
+        ].forEach({ $0.addTarget(self, action: #selector(handleToReportWeb), for: .touchUpInside)})
     }
     
-    @objc fileprivate func handleToCollection() {
-        let collectionController = CollectionController()
-        navigationController?.pushViewController(collectionController, animated: true)
+    @objc fileprivate func handleToReportWeb(button: UIButton) {
+        var webViewController: WebViewController
+        switch button {
+        case reportStackView.infringementButton:
+            webViewController = WebViewController(url: "https://www.privacy.go.kr/wcp/inv/perinfo.do", title: "개인정보 침해신고")
+        case reportStackView.feudButton:
+            webViewController = WebViewController(url: "https://www.i-privacy.kr/jsp/user4/report/trouble2.jsp", title: "개인정보 분쟁신고")
+        case reportStackView.leakButton:
+            webViewController = WebViewController(url: "https://www.i-privacy.kr/jsp/user4/report/leack2.jsp", title: "개인정보 유출신고")
+        default:
+            webViewController = WebViewController(url: "https://www.i-privacy.kr/jsp/user4/report/collect.jsp", title: "개인정보 수집신고")
+        }
+        navigationController?.pushViewController(webViewController, animated: true)
     }
     
     @objc fileprivate func handleCall118() {
