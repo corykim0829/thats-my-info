@@ -29,6 +29,7 @@
 		38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C823096D9500C375AD /* DetectAuthController.swift */; };
 		38FC84CB23096F7400C375AD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84CA23096F7400C375AD /* UserInfo.swift */; };
 		38FC84CD230970AD00C375AD /* DetectNaverAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */; };
+		38FC84D2230ADD2A00C375AD /* NaverAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */; };
 		4F98630D377368BB22150161 /* Pods_thats_my_infoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA13A7BE5D554D9C8F323D69 /* Pods_thats_my_infoTests.framework */; };
 		E38CD3DF104698CA09CE20EF /* Pods_thats_my_info.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E27BC1C259360B7CE9BF98 /* Pods_thats_my_info.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		38FC84C823096D9500C375AD /* DetectAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectAuthController.swift; sourceTree = "<group>"; };
 		38FC84CA23096F7400C375AD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectNaverAuthController.swift; sourceTree = "<group>"; };
+		38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthController.swift; sourceTree = "<group>"; };
 		56C0DF2E839B8648318DBAFE /* Pods_thats_my_infoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thats_my_infoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		729E13B6EFC04F3FE52A19D4 /* Pods-thats my info.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thats my info.debug.xcconfig"; path = "Target Support Files/Pods-thats my info/Pods-thats my info.debug.xcconfig"; sourceTree = "<group>"; };
 		73D9C583E8281077DFBF8CEE /* Pods-thats my infoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thats my infoTests.debug.xcconfig"; path = "Target Support Files/Pods-thats my infoTests/Pods-thats my infoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				38FC84C823096D9500C375AD /* DetectAuthController.swift */,
 				38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */,
+				38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */,
 			);
 			name = Detect;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				3893924C2304838E00F14F64 /* ReportStackView.swift in Sources */,
 				38FC84C423082F8100C375AD /* WebViewController.swift in Sources */,
 				387E3D6B23041AE600F1D503 /* DocumentCell.swift in Sources */,
+				38FC84D2230ADD2A00C375AD /* NaverAuthController.swift in Sources */,
 				3893924423045B5A00F14F64 /* DocumentNavBar.swift in Sources */,
 				381F6CA12302A94800682EE7 /* HomeStackView.swift in Sources */,
 				38FC84CD230970AD00C375AD /* DetectNaverAuthController.swift in Sources */,

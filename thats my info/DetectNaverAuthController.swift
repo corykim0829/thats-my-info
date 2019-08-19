@@ -13,8 +13,8 @@ class DetectNaverAuthController: UIViewController {
     let naverAuthButton = UIButton(title: "NAVER AUTH", titleColor: .white, font: .systemFont(ofSize: 24, weight: .medium), backgroundColor: .clear, target: self, action: #selector(handleNaverAuth))
     
     @objc fileprivate func handleNaverAuth() {
-        let webViewController = WebViewController(url: "https://m.naver.com/" , title: "네이버 본인인증")
-        navigationController?.pushViewController(webViewController, animated: true)
+        let naverAuthController = NaverAuthController()
+        navigationController?.pushViewController(naverAuthController, animated: true)
     }
     
     override func viewDidLoad() {
