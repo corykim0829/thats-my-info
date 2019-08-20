@@ -24,7 +24,7 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
     
     let webView = WKWebView()
     
-    var naverAuthNavBar = NaverAuthNavBar(title: "네이버 본인인증")
+    var naverAuthNavBar = CustomDismissNavBar(title: "네이버 본인인증")
     
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     
@@ -51,6 +51,7 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
     {
         guard let url = navigationAction.request.url else { return }
         let urlPath: String = url.absoluteString.removingPercentEncoding!
+        print("*****", urlPath)
         
         let successUrl = urlPath.components(separatedBy: "#").first
 //        print("SUCESS", successUrl!)

@@ -8,9 +8,9 @@
 
 import LBTATools
 
-class ReportWebNavBar: UIView {
+class CustomBackNavBar: UIView {
     
-    let titleLabel = UILabel(text: "주민번호 불법수집신고", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
+    let titleLabel = UILabel(text: "title", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
     let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal))
     
     init(title: String) {

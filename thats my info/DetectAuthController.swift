@@ -12,13 +12,13 @@ import JGProgressHUD
 class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     
     let titleLabel = UILabel(text: "상세정보 입력", font: .systemFont(ofSize: 20, weight: .bold), textColor: .white, textAlignment: .center)
-    let dismissButton = UIButton(image: #imageLiteral(resourceName: "dismiss_button_bold").withRenderingMode(.alwaysOriginal), tintColor: .white)
+    let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), tintColor: .white)
     
     let naverIdLabel = UILabel(text: " 네이버 아이디", font: .systemFont(ofSize: 20, weight: .bold), textColor: .white, textAlignment: .left)
     let naverIdDiscriptionLabel = UILabel(text: " @naver.com을 제외한 ID를 적어주세요", font: .systemFont(ofSize: 16, weight: .light), textColor: .white, textAlignment: .left)
     let naverIdTextField: UITextField = {
         let tf = CustomTextField(padding: 16)
-        tf.layer.cornerRadius = 16
+        tf.layer.cornerRadius = 8
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.constrainHeight(40)
         return tf
@@ -29,7 +29,7 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     let phoneTextField: UITextField = {
         let tf = CustomTextField(padding: 16)
         tf.constrainHeight(40)
-        tf.layer.cornerRadius = 16
+        tf.layer.cornerRadius = 8
         tf.keyboardType = .phonePad
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return tf
@@ -39,15 +39,17 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
        let button = UIButton(title: "네이버 본인인증", titleColor: .white, font: .systemFont(ofSize: 18, weight: .bold), backgroundColor: #colorLiteral(red: 0.1776808647, green: 0.8088077911, blue: 0.4675460188, alpha: 1))
         button.addTarget(self, action: #selector(handleToNaverAuth), for: .touchUpInside)
         button.constrainHeight(48)
-        button.layer.cornerRadius = 16
+        button.layer.cornerRadius = 8
         return button
     }()
     
     @objc fileprivate func handleTextChange(textField: UITextField) {
         if textField == naverIdTextField {
             authViewModel.naverId = textField.text
+            self.naverIdConfirmImage.isHidden = textField.text?.isEmpty ?? true
         } else {
             authViewModel.phone = textField.text
+            self.phoneNumberConfirmImage.isHidden = textField.text?.count ?? 0 < 9
         }
     }
     
@@ -55,13 +57,20 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
         let button = UIButton(title: "탐색 시작", titleColor: .white, font: .systemFont(ofSize: 18, weight: .bold), backgroundColor: .lightGray, target: self, action: #selector(handleDoDetect))
         button.constrainHeight(48)
         button.setTitleColor(.darkGray, for: .disabled)
-        button.layer.cornerRadius = 16
+        button.layer.cornerRadius = 8
         button.isEnabled = false
         return button
     }()
     
     @objc fileprivate func handleDoDetect() {
         
+    }
+    
+    let toProvisionButton = UIButton(title: "개인정보보호 처리 방침", titleColor: .white, font: .systemFont(ofSize: 16, weight: .light), backgroundColor: .clear, target: self, action: #selector(handleToProvision))
+    
+    @objc fileprivate func handleToProvision() {
+        let provisionController = ProvisionController()
+        present(provisionController, animated: true, completion: nil)
     }
     
     let naverIdConfirmImage = UIImageView(image: #imageLiteral(resourceName: "confirm").withRenderingMode(.alwaysOriginal), contentMode: .scaleAspectFill)
@@ -87,16 +96,14 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
             naverIdDiscriptionLabel,
             naverIdTextField,
             phoneLabel,
-            phoneDiscriptionLabel,
             phoneTextField,
             toNaverAuthButton,
             doDetectButton
             ])
         
         sv.setCustomSpacing(4, after: naverIdLabel)
-        sv.setCustomSpacing(4, after: phoneLabel)
+        sv.setCustomSpacing(8, after: phoneLabel)
         sv.setCustomSpacing(8, after: naverIdDiscriptionLabel)
-        sv.setCustomSpacing(8, after: phoneDiscriptionLabel)
         sv.setCustomSpacing(16, after: naverIdTextField)
         sv.setCustomSpacing(22, after: phoneTextField)
         sv.setCustomSpacing(12, after: toNaverAuthButton)
@@ -110,6 +117,8 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     
     func didSuceessNaverAuth(accessToken: String) {
         authViewModel.isNaverAuthSuccess = true
+        naverAuthConfirmImage.isHidden = !(authViewModel.isNaverAuthSuccess ?? false)
+        toNaverAuthButton.isEnabled = !(authViewModel.isNaverAuthSuccess ?? false)
         authViewModel.accessToken = accessToken
     }
 
@@ -118,7 +127,7 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
         
         navigationController?.navigationBar.isHidden = true
 
-        dismissButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapDismiss)))
         [naverIdConfirmImage, naverAuthConfirmImage, phoneNumberConfirmImage].forEach({ $0.isHidden = true })
         setupUI()
@@ -129,7 +138,7 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
         authViewModel.isFormValid.bind { [unowned self] (isFormValid) in
             guard let isFormValid = isFormValid else { return }
             self.doDetectButton.isEnabled = isFormValid
-            self.doDetectButton.backgroundColor = isFormValid ? #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1) : .lightGray
+            self.doDetectButton.backgroundColor = isFormValid ? #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1) : .lightGray
         }
     }
     
@@ -137,8 +146,8 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
         view.endEditing(true)
     }
     
-    @objc fileprivate func handleDismiss() {
-        dismiss(animated: true)
+    @objc fileprivate func handleBack() {
+        navigationController?.popViewController(animated: true)
     }
     
     fileprivate func setupUI() {
@@ -163,7 +172,10 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
         naverAuthConfirmImage.anchor(top: nil, leading: nil, bottom: nil, trailing: toNaverAuthButton.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 16), size: .init(width: 20, height: 20))
         naverAuthConfirmImage.centerYAnchor.constraint(equalTo: toNaverAuthButton.centerYAnchor).isActive = true
         
-        view.addSubview(dismissButton)
-        dismissButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 24), size: .init(width: 24, height: 24))
+        view.addSubview(backButton)
+        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 24, bottom: 0, right: 0), size: .init(width: 24, height: 24))
+        
+        view.addSubview(toProvisionButton)
+        toProvisionButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 8, right: 0), size: .init(width: 0, height: 16))
     }
 }

@@ -17,8 +17,7 @@ class HomeController: UIViewController {
     
     @objc fileprivate func handleToDetect() {
         let detectAuthController = DetectAuthController()
-        let navigationController = UINavigationController(rootViewController: detectAuthController)
-        present(navigationController, animated: true)
+        navigationController?.pushViewController(detectAuthController, animated: true)
     }
     
     @objc fileprivate func handleToReport() {

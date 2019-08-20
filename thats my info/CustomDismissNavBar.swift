@@ -8,9 +8,9 @@
 
 import LBTATools
 
-class NaverAuthNavBar: UIView {
+class CustomDismissNavBar: UIView {
     
-    let titleLabel = UILabel(text: "네이버 본인인증", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
+    let titleLabel = UILabel(text: "title", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
     let dismissButton = UIButton(image: #imageLiteral(resourceName: "dismiss_button_bold").withRenderingMode(.alwaysOriginal), tintColor: .white)
     
     init(title: String) {

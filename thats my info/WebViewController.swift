@@ -16,12 +16,12 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var webView = WKWebView()
     var reportUrl = ""
     
-    var reportWebNavBar: ReportWebNavBar
+    var reportWebNavBar: CustomBackNavBar
     
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     
     init(url: String, title: String) {
-        reportWebNavBar = ReportWebNavBar(title: title)
+        reportWebNavBar = CustomBackNavBar(title: title)
         
         super.init(nibName: nil, bundle: nil)
         reportUrl = url

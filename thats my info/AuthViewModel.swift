@@ -18,6 +18,6 @@ class AuthViewModel {
     var accessToken: String?
     
     fileprivate func checkValidity() {
-        isFormValid.value = naverId?.isEmpty == false && phone?.isEmpty == false && isNaverAuthSuccess ?? false
+        isFormValid.value = naverId?.isEmpty == false && phone?.count ?? 0 >= 9 && isNaverAuthSuccess ?? false
     }
 }
