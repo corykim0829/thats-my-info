@@ -12,10 +12,12 @@ class AuthViewModel {
     
     var isFormValid = Bindable<Bool>()
     
-    var email: String? { didSet { checkValidity() } }
-    var password: String? { didSet { checkValidity() } }
+    var naverId: String? { didSet { checkValidity() } }
+    var phone: String? { didSet { checkValidity() } }
+    var isNaverAuthSuccess: Bool? { didSet { checkValidity() }}
+    var accessToken: String?
     
     fileprivate func checkValidity() {
-        isFormValid.value = email?.isEmpty == false && password?.isEmpty == false
+        isFormValid.value = naverId?.isEmpty == false && phone?.isEmpty == false && isNaverAuthSuccess ?? false
     }
 }

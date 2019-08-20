@@ -10,7 +10,13 @@ import UIKit
 import WebKit
 import Alamofire
 
+protocol NaverAuthControllerDelegate {
+    func didSuceessNaverAuth(accessToken: String)
+}
+
 class NaverAuthController: UIViewController, WKNavigationDelegate {
+    
+    var delegate: NaverAuthControllerDelegate?
 
     let naverLoginAuthURL = "https://rs-privacy.azurewebsites.net/nvlogin/auth"
     let successURL = "https://rs-privacy.azurewebsites.net/nvlogin/success"
@@ -47,15 +53,13 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
         let urlPath: String = url.absoluteString.removingPercentEncoding!
         
         let successUrl = urlPath.components(separatedBy: "#").first
-        print("SUCESS", successUrl!)
+//        print("SUCESS", successUrl!)
         
         let token = urlPath.components(separatedBy: "#").last
-        print(token)
         
         if successUrl == successURL {
-            print("Hello Success!!")
-            
-            // protocol
+            self.delegate?.didSuceessNaverAuth(accessToken: token ?? "")
+            dismiss(animated: true)
         }
         decisionHandler(.allow)
     }
