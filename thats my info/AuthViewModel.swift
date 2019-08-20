@@ -20,4 +20,9 @@ class AuthViewModel {
     fileprivate func checkValidity() {
         isFormValid.value = naverId?.isEmpty == false && phone?.count ?? 0 >= 9 && isNaverAuthSuccess ?? false
     }
+    
+    func toUserInfo() -> UserInfo {
+        let userInfo = UserInfo(naverId: naverId ?? "", phone: phone ?? "", accessToken: accessToken ?? "")
+        return userInfo
+    }
 }

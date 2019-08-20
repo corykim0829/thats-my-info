@@ -51,7 +51,7 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
     {
         guard let url = navigationAction.request.url else { return }
         let urlPath: String = url.absoluteString.removingPercentEncoding!
-        print("*****", urlPath)
+//        print("*****", urlPath)
         
         let successUrl = urlPath.components(separatedBy: "#").first
 //        print("SUCESS", successUrl!)
@@ -59,8 +59,9 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
         let token = urlPath.components(separatedBy: "#").last
         
         if successUrl == successURL {
-            self.delegate?.didSuceessNaverAuth(accessToken: token ?? "")
-            dismiss(animated: true)
+            dismiss(animated: true) {
+                self.delegate?.didSuceessNaverAuth(accessToken: token ?? "")
+            }
         }
         decisionHandler(.allow)
     }

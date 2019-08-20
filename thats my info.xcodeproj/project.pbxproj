@@ -28,11 +28,11 @@
 		38DD9F42230BF20800EF4983 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F41230BF20800EF4983 /* AuthViewModel.swift */; };
 		38DD9F44230BF2DA00EF4983 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F43230BF2DA00EF4983 /* Bindable.swift */; };
 		38DD9F46230C368C00EF4983 /* ProvisionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F45230C368C00EF4983 /* ProvisionController.swift */; };
+		38DD9F48230C61E900EF4983 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F47230C61E900EF4983 /* ResultHeaderView.swift */; };
 		38FC84C423082F8100C375AD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C323082F8100C375AD /* WebViewController.swift */; };
 		38FC84C7230832AE00C375AD /* CustomBackNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C6230832AE00C375AD /* CustomBackNavBar.swift */; };
 		38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C823096D9500C375AD /* DetectAuthController.swift */; };
 		38FC84CB23096F7400C375AD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84CA23096F7400C375AD /* UserInfo.swift */; };
-		38FC84CD230970AD00C375AD /* DetectNaverAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */; };
 		38FC84D2230ADD2A00C375AD /* NaverAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */; };
 		38FC84D4230AEE4C00C375AD /* DetectResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84D3230AEE4C00C375AD /* DetectResultController.swift */; };
 		4F98630D377368BB22150161 /* Pods_thats_my_infoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA13A7BE5D554D9C8F323D69 /* Pods_thats_my_infoTests.framework */; };
@@ -84,11 +84,11 @@
 		38DD9F41230BF20800EF4983 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		38DD9F43230BF2DA00EF4983 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		38DD9F45230C368C00EF4983 /* ProvisionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionController.swift; sourceTree = "<group>"; };
+		38DD9F47230C61E900EF4983 /* ResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
 		38FC84C323082F8100C375AD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		38FC84C6230832AE00C375AD /* CustomBackNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackNavBar.swift; sourceTree = "<group>"; };
 		38FC84C823096D9500C375AD /* DetectAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectAuthController.swift; sourceTree = "<group>"; };
 		38FC84CA23096F7400C375AD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectNaverAuthController.swift; sourceTree = "<group>"; };
 		38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthController.swift; sourceTree = "<group>"; };
 		38FC84D3230AEE4C00C375AD /* DetectResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectResultController.swift; sourceTree = "<group>"; };
 		56C0DF2E839B8648318DBAFE /* Pods_thats_my_infoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thats_my_infoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +159,7 @@
 				3893924B2304838E00F14F64 /* ReportStackView.swift */,
 				38FC84C6230832AE00C375AD /* CustomBackNavBar.swift */,
 				38DD9F3E230BE72300EF4983 /* CustomDismissNavBar.swift */,
+				38DD9F47230C61E900EF4983 /* ResultHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -242,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				38FC84C823096D9500C375AD /* DetectAuthController.swift */,
-				38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */,
 				38FC84D3230AEE4C00C375AD /* DetectResultController.swift */,
 				38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */,
 				38DD9F45230C368C00EF4983 /* ProvisionController.swift */,
@@ -509,7 +509,6 @@
 				38FC84D2230ADD2A00C375AD /* NaverAuthController.swift in Sources */,
 				3893924423045B5A00F14F64 /* DocumentNavBar.swift in Sources */,
 				381F6CA12302A94800682EE7 /* HomeStackView.swift in Sources */,
-				38FC84CD230970AD00C375AD /* DetectNaverAuthController.swift in Sources */,
 				38511384230006C3009998AF /* ViewController.swift in Sources */,
 				38DD9F44230BF2DA00EF4983 /* Bindable.swift in Sources */,
 				38DD9F46230C368C00EF4983 /* ProvisionController.swift in Sources */,
@@ -518,6 +517,7 @@
 				387E3D692304181900F1D503 /* DocumentController.swift in Sources */,
 				387E3D6D23041B8300F1D503 /* Document.swift in Sources */,
 				38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */,
+				38DD9F48230C61E900EF4983 /* ResultHeaderView.swift in Sources */,
 				381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */,
 				389392462304704500F14F64 /* CustomTextField.swift in Sources */,
 				38DD9F3F230BE72300EF4983 /* CustomDismissNavBar.swift in Sources */,
