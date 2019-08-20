@@ -54,11 +54,12 @@ class DetectResultCell: LBTAListCell<Result> {
 
 class DetectResultController: LBTAListController<DetectResultCell, Result>, UICollectionViewDelegateFlowLayout {
     
-    fileprivate let resultHeaderHeight: CGFloat = 128
+    fileprivate let resultHeaderHeight: CGFloat = 200
+    fileprivate let navBarHeight: CGFloat = 48
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     fileprivate let headerId = "headerId"
     
-    fileprivate let numberOfExposureLabel = UILabel(text: "1234", font: .systemFont(ofSize: 24, weight: .bold), textColor: .red, textAlignment: .center, numberOfLines: 1)
+    fileprivate let navBar = CustomDismissNavBar(title: "탐색 결과")
     
     fileprivate var userInfo: UserInfo
     
@@ -104,7 +105,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         return .init(width: view.frame.width, height: resultHeaderHeight)
     }
     
-    var headerView: ResultHeaderView?
+    fileprivate var headerView: ResultHeaderView?
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? ResultHeaderView
@@ -116,6 +117,14 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         headerView?.countingStartButton.addTarget(self, action: #selector(handleStartC), for: .touchUpInside)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        view.layer.zPosition = -1
+    }
+    
     @objc fileprivate func handleStartC() {
         animationStartDate = Date()
         let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
@@ -123,11 +132,10 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 80)
+        return .init(width: view.frame.width, height: 64)
     }
     
     // counting animation label
-    
     var startValue: Double = 0
     var endValue: Double = 200
     let animationDuration: Double = 1
@@ -163,14 +171,13 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     
     fileprivate func setupUI() {
         collectionView.scrollIndicatorInsets.top = resultHeaderHeight
-        collectionView.addSubview(topToSafeAreaView)
+        collectionView.contentInset.top = navBarHeight
         
-//        collectionView.contentInset.top = resultHeaderHeight
+        collectionView.addSubview(topToSafeAreaView)
+        collectionView.addSubview(navBar)
+        navBar.anchor(top: topToSafeAreaView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: navBarHeight))
         
         topToSafeAreaView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor)
-        
-//        collectionView.addSubview(numberOfExposureLabel)
-//        numberOfExposureLabel.centerInSuperview()
     }
 
     required init?(coder aDecoder: NSCoder) {
