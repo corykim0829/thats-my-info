@@ -24,6 +24,9 @@
 		389392462304704500F14F64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389392452304704500F14F64 /* CustomTextField.swift */; };
 		3893924A23047CB700F14F64 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924923047CB700F14F64 /* ReportController.swift */; };
 		3893924C2304838E00F14F64 /* ReportStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924B2304838E00F14F64 /* ReportStackView.swift */; };
+		38DD9F3F230BE72300EF4983 /* NaverAuthNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F3E230BE72300EF4983 /* NaverAuthNavBar.swift */; };
+		38DD9F42230BF20800EF4983 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F41230BF20800EF4983 /* AuthViewModel.swift */; };
+		38DD9F44230BF2DA00EF4983 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F43230BF2DA00EF4983 /* Bindable.swift */; };
 		38FC84C423082F8100C375AD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C323082F8100C375AD /* WebViewController.swift */; };
 		38FC84C7230832AE00C375AD /* ReportWebNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C6230832AE00C375AD /* ReportWebNavBar.swift */; };
 		38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C823096D9500C375AD /* DetectAuthController.swift */; };
@@ -76,6 +79,9 @@
 		389392452304704500F14F64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3893924923047CB700F14F64 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		3893924B2304838E00F14F64 /* ReportStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStackView.swift; sourceTree = "<group>"; };
+		38DD9F3E230BE72300EF4983 /* NaverAuthNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAuthNavBar.swift; sourceTree = "<group>"; };
+		38DD9F41230BF20800EF4983 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		38DD9F43230BF2DA00EF4983 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		38FC84C323082F8100C375AD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		38FC84C6230832AE00C375AD /* ReportWebNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportWebNavBar.swift; sourceTree = "<group>"; };
 		38FC84C823096D9500C375AD /* DetectAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectAuthController.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 				389392452304704500F14F64 /* CustomTextField.swift */,
 				3893924B2304838E00F14F64 /* ReportStackView.swift */,
 				38FC84C6230832AE00C375AD /* ReportWebNavBar.swift */,
+				38DD9F3E230BE72300EF4983 /* NaverAuthNavBar.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -179,6 +186,7 @@
 		38511380230006C3009998AF /* thats my info */ = {
 			isa = PBXGroup;
 			children = (
+				38DD9F40230BF1F400EF4983 /* ViewModels */,
 				381F6C9B2302A1C400682EE7 /* Models */,
 				381F6C9D2302A1D200682EE7 /* Views */,
 				381F6C9C2302A1CC00682EE7 /* Controllers */,
@@ -188,6 +196,7 @@
 				38511388230006C7009998AF /* Assets.xcassets */,
 				3851138A230006C7009998AF /* LaunchScreen.storyboard */,
 				3851138D230006C7009998AF /* Info.plist */,
+				38DD9F43230BF2DA00EF4983 /* Bindable.swift */,
 			);
 			path = "thats my info";
 			sourceTree = "<group>";
@@ -210,6 +219,14 @@
 			path = "thats my infoUITests";
 			sourceTree = "<group>";
 		};
+		38DD9F40230BF1F400EF4983 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				38DD9F41230BF20800EF4983 /* AuthViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
 		38FC84C523082F8700C375AD /* Report */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,8 +241,8 @@
 			children = (
 				38FC84C823096D9500C375AD /* DetectAuthController.swift */,
 				38FC84CC230970AD00C375AD /* DetectNaverAuthController.swift */,
-				38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */,
 				38FC84D3230AEE4C00C375AD /* DetectResultController.swift */,
+				38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */,
 			);
 			name = Detect;
 			sourceTree = "<group>";
@@ -491,6 +508,7 @@
 				381F6CA12302A94800682EE7 /* HomeStackView.swift in Sources */,
 				38FC84CD230970AD00C375AD /* DetectNaverAuthController.swift in Sources */,
 				38511384230006C3009998AF /* ViewController.swift in Sources */,
+				38DD9F44230BF2DA00EF4983 /* Bindable.swift in Sources */,
 				38FC84C7230832AE00C375AD /* ReportWebNavBar.swift in Sources */,
 				38511382230006C3009998AF /* AppDelegate.swift in Sources */,
 				387E3D692304181900F1D503 /* DocumentController.swift in Sources */,
@@ -498,7 +516,9 @@
 				38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */,
 				381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */,
 				389392462304704500F14F64 /* CustomTextField.swift in Sources */,
+				38DD9F3F230BE72300EF4983 /* NaverAuthNavBar.swift in Sources */,
 				38FC84CB23096F7400C375AD /* UserInfo.swift in Sources */,
+				38DD9F42230BF20800EF4983 /* AuthViewModel.swift in Sources */,
 				3893924A23047CB700F14F64 /* ReportController.swift in Sources */,
 				38FC84D4230AEE4C00C375AD /* DetectResultController.swift in Sources */,
 			);

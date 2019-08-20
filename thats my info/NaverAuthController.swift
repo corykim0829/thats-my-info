@@ -13,13 +13,12 @@ import Alamofire
 class NaverAuthController: UIViewController, WKNavigationDelegate {
 
     let naverLoginAuthURL = "https://rs-privacy.azurewebsites.net/nvlogin/auth"
+    let successURL = "https://rs-privacy.azurewebsites.net/nvlogin/success"
     let indicatorView = UIActivityIndicatorView(style: .gray)
-    
-    let urlLabel = UILabel(text: "now", font: .systemFont(ofSize: 24, weight: .bold), textColor: .darkGray, textAlignment: .center, numberOfLines: 0)
     
     let webView = WKWebView()
     
-    var reportWebNavBar = ReportWebNavBar(title: "네이버 본인인증")
+    var naverAuthNavBar = NaverAuthNavBar(title: "네이버 본인인증")
     
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     
@@ -28,7 +27,7 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
         
         setupUI()
         
-        reportWebNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        naverAuthNavBar.dismissButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
         
         if let url = URL(string: naverLoginAuthURL) {
             let request = URLRequest(url: url)
@@ -44,25 +43,24 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void)
     {
-        print("***decidePolicyFor navigationAction")
-        if let url = navigationAction.request.url {
-            let urlPath: String = url.absoluteString.removingPercentEncoding!
-            urlLabel.text = urlPath
-            print("URL PATH :", urlPath)
+        guard let url = navigationAction.request.url else { return }
+        let urlPath: String = url.absoluteString.removingPercentEncoding!
+        
+        let successUrl = urlPath.components(separatedBy: "#").first
+        print("SUCESS", successUrl!)
+        
+        let token = urlPath.components(separatedBy: "#").last
+        print(token)
+        
+        if successUrl == successURL {
+            print("Hello Success!!")
             
-            Alamofire.request(urlPath).response { response in // method defaults to `.get`
-                debugPrint(response)
-            }
+            // protocol
         }
         decisionHandler(.allow)
     }
     
-    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        print("**didReceiveServerRedirectForProvisionalNavigation")
-    }
-    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("*didFinish")
         indicatorView.stopAnimating()
     }
     
@@ -70,8 +68,8 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
         indicatorView.stopAnimating()
     }
     
-    @objc fileprivate func handleBack() {
-        navigationController?.popViewController(animated: true)
+    @objc fileprivate func handleDismiss() {
+        dismiss(animated: true, completion: nil)
     }
     
     fileprivate func setupUI() {
@@ -80,16 +78,13 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
         view.addSubview(topToSafeAreaView)
         topToSafeAreaView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor)
         
-        view.addSubview(reportWebNavBar)
-        reportWebNavBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 48))
+        view.addSubview(naverAuthNavBar)
+        naverAuthNavBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 48))
         
         view.addSubview(webView)
-        webView.anchor(top: reportWebNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        webView.anchor(top: naverAuthNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
         view.addSubview(indicatorView)
         indicatorView.centerInSuperview()
-        
-        view.addSubview(urlLabel)
-        urlLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 0))
     }
 }

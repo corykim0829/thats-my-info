@@ -14,7 +14,7 @@ class DetectNaverAuthController: UIViewController {
     
     @objc fileprivate func handleNaverAuth() {
         let naverAuthController = NaverAuthController()
-        navigationController?.pushViewController(naverAuthController, animated: true)
+        present(naverAuthController, animated: true)
     }
     
     override func viewDidLoad() {

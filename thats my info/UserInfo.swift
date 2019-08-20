@@ -9,7 +9,7 @@
 import Foundation
 
 struct UserInfo {
-    var userName: String
-    var phoneNumber: String
-    var email: String
+    var naverId: String
+    var phone: String // 000-0000-0000
+    var accessToken: String
 }
