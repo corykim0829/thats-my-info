@@ -17,8 +17,8 @@ class HomeController: UIViewController {
     
     @objc fileprivate func handleToDetect() {
         let userInfo = UserInfo(naverId: "0", phone: "0", accessToken: "0")
-        let detectAuthController = DetectResultController(userInfo: userInfo)
-//        let detectAuthController = DetectAuthController()
+//        let detectAuthController = DetectResultController(userInfo: userInfo)
+        let detectAuthController = DetectAuthController()
         navigationController?.pushViewController(detectAuthController, animated: true)
     }
     
