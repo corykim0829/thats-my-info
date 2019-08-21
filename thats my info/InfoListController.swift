@@ -79,7 +79,7 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
         fetchDatas()
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == infoNavBar.searchField {
             textField.resignFirstResponder()
             return false
