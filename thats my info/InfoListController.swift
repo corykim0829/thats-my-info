@@ -75,7 +75,7 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
         
         setupUI()
         setupNavBarBehaviors()
-        setupTapGesture()
+//        setupTapGesture()
         fetchDatas()
     }
     
@@ -174,7 +174,8 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let infoCategory = items[indexPath.item]
-        
+        let infoPost = items[indexPath.item]
+        let infoPostController = InfoPostController(infoPost: infoPost)
+        navigationController?.pushViewController(infoPostController, animated: true)
     }
 }
