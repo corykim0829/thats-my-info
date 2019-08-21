@@ -7,8 +7,3 @@
 //
 
 import Foundation
-
-struct Document {
-    let title: String
-    let discription: String
-}

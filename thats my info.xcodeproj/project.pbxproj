@@ -17,9 +17,9 @@
 		3851138C230006C7009998AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3851138A230006C7009998AF /* LaunchScreen.storyboard */; };
 		38511397230006C7009998AF /* thats_my_infoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38511396230006C7009998AF /* thats_my_infoTests.swift */; };
 		385113A2230006C7009998AF /* thats_my_infoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385113A1230006C7009998AF /* thats_my_infoUITests.swift */; };
-		387E3D692304181900F1D503 /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D682304181900F1D503 /* DocumentController.swift */; };
-		387E3D6B23041AE600F1D503 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D6A23041AE600F1D503 /* DocumentCell.swift */; };
-		387E3D6D23041B8300F1D503 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D6C23041B8300F1D503 /* Document.swift */; };
+		387E3D692304181900F1D503 /* InfoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D682304181900F1D503 /* InfoListController.swift */; };
+		387E3D6B23041AE600F1D503 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D6A23041AE600F1D503 /* InfoCell.swift */; };
+		387E3D6D23041B8300F1D503 /* InfoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D6C23041B8300F1D503 /* InfoCategory.swift */; };
 		3893924423045B5A00F14F64 /* DocumentNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924323045B5A00F14F64 /* DocumentNavBar.swift */; };
 		389392462304704500F14F64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389392452304704500F14F64 /* CustomTextField.swift */; };
 		3893924A23047CB700F14F64 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924923047CB700F14F64 /* ReportController.swift */; };
@@ -73,9 +73,9 @@
 		3851139D230006C7009998AF /* thats my infoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "thats my infoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		385113A1230006C7009998AF /* thats_my_infoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thats_my_infoUITests.swift; sourceTree = "<group>"; };
 		385113A3230006C7009998AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		387E3D682304181900F1D503 /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
-		387E3D6A23041AE600F1D503 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
-		387E3D6C23041B8300F1D503 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		387E3D682304181900F1D503 /* InfoListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListController.swift; sourceTree = "<group>"; };
+		387E3D6A23041AE600F1D503 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		387E3D6C23041B8300F1D503 /* InfoCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCategory.swift; sourceTree = "<group>"; };
 		3893924323045B5A00F14F64 /* DocumentNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentNavBar.swift; sourceTree = "<group>"; };
 		389392452304704500F14F64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3893924923047CB700F14F64 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		381F6C9B2302A1C400682EE7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				387E3D6C23041B8300F1D503 /* Document.swift */,
+				387E3D6C23041B8300F1D503 /* InfoCategory.swift */,
 				38FC84CA23096F7400C375AD /* UserInfo.swift */,
 			);
 			name = Models;
@@ -141,10 +141,10 @@
 		381F6C9C2302A1CC00682EE7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				38DD9F49230D05AE00EF4983 /* Info */,
 				38FC84CE230970B000C375AD /* Detect */,
 				38FC84C523082F8700C375AD /* Report */,
 				381F6C9E2302A1F000682EE7 /* HomeController.swift */,
-				387E3D682304181900F1D503 /* DocumentController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				381F6CA02302A94800682EE7 /* HomeStackView.swift */,
-				387E3D6A23041AE600F1D503 /* DocumentCell.swift */,
+				387E3D6A23041AE600F1D503 /* InfoCell.swift */,
 				3893924323045B5A00F14F64 /* DocumentNavBar.swift */,
 				389392452304704500F14F64 /* CustomTextField.swift */,
 				3893924B2304838E00F14F64 /* ReportStackView.swift */,
@@ -228,6 +228,14 @@
 				38DD9F41230BF20800EF4983 /* AuthViewModel.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		38DD9F49230D05AE00EF4983 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				387E3D682304181900F1D503 /* InfoListController.swift */,
+			);
+			name = Info;
 			sourceTree = "<group>";
 		};
 		38FC84C523082F8700C375AD /* Report */ = {
@@ -505,7 +513,7 @@
 			files = (
 				3893924C2304838E00F14F64 /* ReportStackView.swift in Sources */,
 				38FC84C423082F8100C375AD /* WebViewController.swift in Sources */,
-				387E3D6B23041AE600F1D503 /* DocumentCell.swift in Sources */,
+				387E3D6B23041AE600F1D503 /* InfoCell.swift in Sources */,
 				38FC84D2230ADD2A00C375AD /* NaverAuthController.swift in Sources */,
 				3893924423045B5A00F14F64 /* DocumentNavBar.swift in Sources */,
 				381F6CA12302A94800682EE7 /* HomeStackView.swift in Sources */,
@@ -514,8 +522,8 @@
 				38DD9F46230C368C00EF4983 /* ProvisionController.swift in Sources */,
 				38FC84C7230832AE00C375AD /* CustomBackNavBar.swift in Sources */,
 				38511382230006C3009998AF /* AppDelegate.swift in Sources */,
-				387E3D692304181900F1D503 /* DocumentController.swift in Sources */,
-				387E3D6D23041B8300F1D503 /* Document.swift in Sources */,
+				387E3D692304181900F1D503 /* InfoListController.swift in Sources */,
+				387E3D6D23041B8300F1D503 /* InfoCategory.swift in Sources */,
 				38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */,
 				38DD9F48230C61E900EF4983 /* ResultHeaderView.swift in Sources */,
 				381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */,
