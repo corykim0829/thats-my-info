@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JGProgressHUD
 
 class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     
@@ -63,7 +62,9 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     }()
     
     @objc fileprivate func handleDoDetect() {
-        
+        let userInfo = authViewModel.toUserInfo()
+        let detectResultController = DetectResultController(userInfo: userInfo)
+        navigationController?.pushViewController(detectResultController, animated: true)
     }
     
     let toProvisionButton = UIButton(title: "개인정보보호 처리 방침", titleColor: .white, font: .systemFont(ofSize: 16, weight: .light), backgroundColor: .clear, target: self, action: #selector(handleToProvision))
@@ -113,7 +114,6 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     }()
     
     fileprivate let authViewModel = AuthViewModel()
-    fileprivate let authHUD = JGProgressHUD(style: .light)
     
     func didSuceessNaverAuth(accessToken: String) {
         authViewModel.isNaverAuthSuccess = true
