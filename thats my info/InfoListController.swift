@@ -62,7 +62,7 @@ class InfoCell: LBTAListCell<InfoPost> {
     }
 }
 
-class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionViewDelegateFlowLayout {
+class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     
@@ -73,18 +73,37 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        items = [
-//            .init(title: "개인정보란?", url: "/privacy-is"),
-//            .init(title: "개인정보 보호 관련 법제", url: "/rules"),
-//            .init(title: "개인정보 보호 이용수칙", url: "/rules-of-use"),
-//            .init(title: "내 정보 지킴이 캠페인", url: "/campaign")
-//        ]
         setupUI()
-        // bug
+        setupNavBarBehaviors()
         setupTapGesture()
-        infoNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
-        
         fetchDatas()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == infoNavBar.searchField {
+            textField.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    fileprivate func setupNavBarBehaviors() {
+        infoNavBar.searchField.delegate = self
+        infoNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        infoNavBar.searchField.addTarget(self, action: #selector(handleSearch), for: .editingDidEndOnExit)
+    }
+    
+    @objc fileprivate func handleSearch(textField: UITextField) {
+        let cachedItems = items
+        items = []
+        
+        let keyword: String = textField.text ?? ""
+        if keyword == "" {
+            items = []
+            fetchDatas()
+        } else {
+            items = cachedItems.filter({ $0.title.contains(keyword) })
+        }
     }
     
     fileprivate func fetchDatas() {
@@ -117,7 +136,6 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
                     infoDictsArray.append(dict)
                     self.items.append(.init(title: infoTitleUrl.title, url: infoTitleUrl.url, infoPostDataDict: dict))
                 }
-//                print(infoTitleUrl, infoDictsArray.count)
             })
         }
     }
@@ -127,7 +145,7 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
     }
     
     @objc fileprivate func handleTapDismiss() {
-        self.view.endEditing(true) // dismisses keyboard
+        self.view.endEditing(true)
     }
     
     @objc fileprivate func handleBack() {
@@ -135,7 +153,6 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
     }
     
     fileprivate func setupUI() {
-//        collectionView.alwaysBounceVertical = true
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .white
         collectionView.contentInset.top = navBarHeight + 8
