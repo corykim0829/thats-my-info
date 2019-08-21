@@ -27,9 +27,9 @@ class HomeController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    @objc fileprivate func handleToDocument() {
-        let documentController = DocumentController()
-        navigationController?.pushViewController(documentController, animated: true)
+    @objc fileprivate func handleToInfo() {
+        let infoListController = InfoListController()
+        navigationController?.pushViewController(infoListController, animated: true)
     }
 
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class HomeController: UIViewController {
     fileprivate func setupSelectors() {
         homeStackView.toDetectButton.addTarget(self, action: #selector(handleToDetect), for: .touchUpInside)
         homeStackView.toReportButton.addTarget(self, action: #selector(handleToReport), for: .touchUpInside)
-        homeStackView.toDocumentButton.addTarget(self, action: #selector(handleToDocument), for: .touchUpInside)
+        homeStackView.toDocumentButton.addTarget(self, action: #selector(handleToInfo), for: .touchUpInside)
     }
     
     fileprivate func setupNavigation() {
