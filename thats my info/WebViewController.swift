@@ -18,7 +18,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     var reportWebNavBar: CustomBackNavBar
     
-    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
+    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1))
     
     init(url: String, title: String) {
         reportWebNavBar = CustomBackNavBar(title: title)

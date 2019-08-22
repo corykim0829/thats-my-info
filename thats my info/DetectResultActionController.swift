@@ -16,7 +16,7 @@ class DetectResultActionController: UIViewController, WKNavigationDelegate {
     
     var webView = WKWebView()
     var detectResultActionUrl: String
-    let themeColor: UIColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
+    let themeColor: UIColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
     
     var customBackNavBar: CustomBackNavBar
     

@@ -32,7 +32,7 @@ class DocumentNavBar: UIView {
     }
     
     fileprivate func setupUI() {
-        backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
         
         addSubview(searchField)
         searchField.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 10, left: 64, bottom: 10, right: 64))

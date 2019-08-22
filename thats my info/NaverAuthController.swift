@@ -24,9 +24,9 @@ class NaverAuthController: UIViewController, WKNavigationDelegate {
     
     let webView = WKWebView()
     
-    var naverAuthNavBar = CustomDismissNavBar(title: "네이버 본인인증")
+    var naverAuthNavBar = CustomDismissNavBar(title: "네이버 본인인증", backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1), tintColor: .white)
     
-    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
+    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1))
     
     override func viewDidLoad() {
         super.viewDidLoad()
