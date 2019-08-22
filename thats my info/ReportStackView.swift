@@ -11,22 +11,21 @@ import LBTATools
 
 class ReportStackView: UIStackView {
     
-    let titleFontSize: CGFloat = 20
+    let titleFontSize: CGFloat = 18
+    let buttonsLabelColor: UIColor = .white
     
     fileprivate func createButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.backgroundColor = .white
+        button.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
         button.setupShadow(opacity: 0.3, radius: 8, offset: .init(width: 2, height: 2), color: .gray)
-        button.setTitleColor(.clear, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: titleFontSize, weight: .bold)
-        button.layer.cornerRadius = 24
+        button.layer.cornerRadius = 32
         return button
     }
     
-    lazy var infringementButtonlabel = UILabel(text: "개인정보\n침해신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
-    lazy var leakButtonlabel = UILabel(text: "개인정보\n유출신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
-    lazy var feudButtonlabel = UILabel(text: "개인정보\n분쟁신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
-    lazy var collectionButtonlabel = UILabel(text: "개인정보\n수집신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
+    lazy var infringementButtonlabel = UILabel(text: "개인정보\n침해신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: buttonsLabelColor, textAlignment: .left, numberOfLines: 2)
+    lazy var leakButtonlabel = UILabel(text: "개인정보\n유출신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: buttonsLabelColor, textAlignment: .left, numberOfLines: 2)
+    lazy var feudButtonlabel = UILabel(text: "개인정보\n분쟁신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: buttonsLabelColor, textAlignment: .left, numberOfLines: 2)
+    lazy var collectionButtonlabel = UILabel(text: "개인정보\n수집신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: buttonsLabelColor, textAlignment: .left, numberOfLines: 2)
     
     lazy var infringementButton = createButton()
     lazy var leakButton = createButton()

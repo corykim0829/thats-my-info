@@ -151,7 +151,7 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     }
     
     fileprivate func setupUI() {
-        view.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
         
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 18, left: 0, bottom: 0, right: 0))

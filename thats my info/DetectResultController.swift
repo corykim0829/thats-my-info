@@ -18,7 +18,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     
     fileprivate let resultHeaderHeight: CGFloat = 208
     fileprivate let navBarHeight: CGFloat = 48
-    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
+    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1))
     fileprivate let headerId = "headerId"
     fileprivate let coverView = UIView(backgroundColor: .white)
     

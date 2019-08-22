@@ -10,14 +10,21 @@ import LBTATools
 
 class ReportController: UIViewController {
     
-    let leftRightPaddingValue: CGFloat = 24
+    let backgroundView: UIView = {
+        let view = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1))
+        let value: CGFloat = 1700
+        view.constrainWidth(value)
+        view.constrainHeight(value)
+        view.layer.cornerRadius = value / 2
+        return view
+    }()
     
-    let titlelabel = UILabel(text: "개인정보 불법 신고", font: .systemFont(ofSize: 18, weight: .bold), textColor: .darkGray, textAlignment: .center)
-    let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), tintColor: .darkGray)
+    let titlelabel = UILabel(text: "개인정보 불법 신고", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
+    let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), tintColor: .white)
     let call118Button: UIButton = {
         let button = UIButton(title: "", titleColor: .white, font: .systemFont(ofSize: 18), backgroundColor: .white, target: self, action: #selector(handleCall118))
-        button.setupShadow(opacity: 0.3, radius: 6, offset: .init(width: 2, height: 2), color: .gray)
-        button.layer.cornerRadius = 16
+        button.setupShadow(opacity: 0.3, radius: 8, offset: .init(width: 2, height: 5), color: .gray)
+        button.layer.cornerRadius = 24
         return button
     }()
     
@@ -27,7 +34,7 @@ class ReportController: UIViewController {
     let callLabel = UILabel(text: "탭하여 전화걸기 (국번없이 118)", font: .systemFont(ofSize: 16, weight: .bold), textColor: #colorLiteral(red: 0.2, green: 0.7294117647, blue: 0.4039215686, alpha: 1), textAlignment: .left)
     let telelPhoneImageView = UIImageView(image: #imageLiteral(resourceName: "telephone").withRenderingMode(.alwaysOriginal), contentMode: .scaleAspectFill)
     
-    let manualReportTitleLabel = UILabel(text: "직접 신고하기", font: .systemFont(ofSize: 22, weight: .heavy), textColor: .darkGray, textAlignment: .left, numberOfLines: 1)
+    let manualReportTitleLabel = UILabel(text: "직접 신고하기", font: .systemFont(ofSize: 18, weight: .heavy), textColor: .darkGray, textAlignment: .left, numberOfLines: 1)
     
     let reportStackView = ReportStackView()
 
@@ -76,6 +83,10 @@ class ReportController: UIViewController {
     fileprivate func setupUI() {
         view.backgroundColor = .white
         
+        let leftRightPaddingValue: CGFloat = 32
+        
+        view.addSubview(backgroundView)
+        
         view.addSubview(titlelabel)
         view.addSubview(backButton)
         titlelabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 24, left: 0, bottom: 0, right: 0))
@@ -98,8 +109,12 @@ class ReportController: UIViewController {
         timeLabel.anchor(top: nil, leading: telelPhoneImageView.trailingAnchor, bottom: callLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 22, bottom: 4, right: 0))
         
         view.addSubview(manualReportTitleLabel)
-        manualReportTitleLabel.anchor(top: call118Button.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 28, bottom: 0, right: 0))
+        manualReportTitleLabel.anchor(top: call118Button.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: leftRightPaddingValue, bottom: 0, right: 0))
         view.addSubview(reportStackView)
         reportStackView.anchor(top: manualReportTitleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: leftRightPaddingValue, bottom: 0, right: leftRightPaddingValue), size: .init(width: 0, height: 256))
+        
+        backgroundView.anchor(top: nil, leading: nil, bottom: call118Button.centerYAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: -32, right: 0))
+        backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view.clipsToBounds = true
     }
 }
