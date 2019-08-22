@@ -15,7 +15,7 @@ class HomeController: UIViewController {
     
     let detectButtonValue: CGFloat = 240
     let subbuttonsHeightValue: CGFloat = 52
-    let themeColor: UIColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
+    let themeColor: UIColor = #colorLiteral(red: 0.1333333333, green: 0.5882352941, blue: 0.9647058824, alpha: 1)
     
     let backgroundView: UIView = {
         let view = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6815336045, blue: 0.9647058824, alpha: 1))
