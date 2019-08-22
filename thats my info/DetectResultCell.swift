@@ -83,13 +83,13 @@ class DetectResultCell: LBTAListCell<Result> {
             titleLabel.text = item.resultDataDictionary["siteName"] as? String
             
             if titleLabel.text?.contains("네이버") ?? false {
-                containerView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7974006738, blue: 0.3821168665, alpha: 1)
+                containerView.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.8078431373, blue: 0.4666666667, alpha: 1)
             } else if titleLabel.text?.contains("다음") ?? false {
                 containerView.backgroundColor = #colorLiteral(red: 0.9684513954, green: 0.3513740689, blue: 0.3031639295, alpha: 1)
             } else if titleLabel.text?.contains("트위터") ?? false {
                 containerView.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
             } else if titleLabel.text?.contains("빙") ?? false {
-                containerView.backgroundColor = #colorLiteral(red: 0.988819818, green: 0.6654537671, blue: 0.1012271759, alpha: 1)
+                containerView.backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.6666666667, blue: 0.1019607843, alpha: 1)
             } else {
 //                let colors = [#colorLiteral(red: 0.988819818, green: 0.6654537671, blue: 0.1012271759, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
 //                let randomNumber = arc4random_uniform(2)
