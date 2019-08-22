@@ -10,6 +10,8 @@ import LBTATools
 
 class ReportController: UIViewController {
     
+    let leftRightPaddingValue: CGFloat = 24
+    
     let titlelabel = UILabel(text: "개인정보 불법 신고", font: .systemFont(ofSize: 20, weight: .bold), textColor: .white, textAlignment: .center)
     let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal))
     let call118Button: UIButton = {
@@ -20,7 +22,7 @@ class ReportController: UIViewController {
     }()
     
     let nameLabel = UILabel(text: "개인정보침해 신고센터", font: .systemFont(ofSize: 24, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 1)
-    let discriptionLabel = UILabel(text: "전화 상담 및 원격점검 등을 통해 PC 악성코드 감염 예방 및 침해사고 피해 복구 지원합니다.", font: .systemFont(ofSize: 18, weight: .medium), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
+    let discriptionLabel = UILabel(text: "전화 상담 및 원격점검 등을 통해\nPC 악성코드 감염 예방 및 침해사고 피해\n복구를 지원합니다.", font: .systemFont(ofSize: 18, weight: .medium), textColor: .darkGray, textAlignment: .left, numberOfLines: 3)
     let timeLabel = UILabel(text: "운영시간 : 연중무휴, 24시간", font: .systemFont(ofSize: 18, weight: .heavy), textColor: .darkGray, textAlignment: .left)
     let callLabel = UILabel(text: "탭하여 전화걸기 (국번없이 118)", font: .systemFont(ofSize: 18, weight: .bold), textColor: #colorLiteral(red: 0.2, green: 0.7294117647, blue: 0.4039215686, alpha: 1), textAlignment: .left)
     
@@ -78,7 +80,7 @@ class ReportController: UIViewController {
         titlelabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 24, left: 0, bottom: 0, right: 0))
         
         view.addSubview(call118Button)
-        call118Button.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 109, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 197))
+        call118Button.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 96, left: leftRightPaddingValue, bottom: 0, right: leftRightPaddingValue), size: .init(width: 0, height: 216))
         
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 24, left: 16, bottom: 0, right: 0), size: .init(width: 24, height: 24))
         
@@ -94,6 +96,6 @@ class ReportController: UIViewController {
         view.addSubview(manualReportTitleLabel)
         manualReportTitleLabel.anchor(top: call118Button.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 32, left: 28, bottom: 0, right: 0))
         view.addSubview(reportStackView)
-        reportStackView.anchor(top: manualReportTitleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 280))
+        reportStackView.anchor(top: manualReportTitleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: leftRightPaddingValue, bottom: 0, right: leftRightPaddingValue), size: .init(width: 0, height: 256))
     }
 }
