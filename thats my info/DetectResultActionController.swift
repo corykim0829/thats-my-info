@@ -51,6 +51,7 @@ class DetectResultActionController: UIViewController, WKNavigationDelegate {
         self.resultDataDictionary = resultDataDictionary
         let title = resultDataDictionary["siteName"] as! String
         customBackNavBar = CustomBackNavBar(title: title)
+        customBackNavBar.titleLabel.font = .systemFont(ofSize: 12)
         
         let url = resultDataDictionary["url"] as! String
         detectResultActionUrl = url
@@ -68,6 +69,7 @@ class DetectResultActionController: UIViewController, WKNavigationDelegate {
             let request = URLRequest(url: url)
             webView.load(request)
         }
+        
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
         

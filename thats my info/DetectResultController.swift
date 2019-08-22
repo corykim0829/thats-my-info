@@ -38,6 +38,11 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         setupUI()
         setupNavBarBehavior()
         detect()
+        setupResultCellBehaviors()
+    }
+    
+    fileprivate func setupResultCellBehaviors() {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,11 +80,11 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         view.layer.zPosition = -1
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let result = items[indexPath.item]
-        let detectResultActionController = DetectResultActionController(resultDataDictionary: result.resultDataDictionary)
-        navigationController?.pushViewController(detectResultActionController, animated: true)
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let result = items[indexPath.item]
+//        let detectResultActionController = DetectResultActionController(resultDataDictionary: result.resultDataDictionary)
+//        navigationController?.pushViewController(detectResultActionController, animated: true)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -116,12 +121,14 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     
     let detectLoadingHud = JGProgressHUD(style: .light)
     
+    fileprivate var userInfoDict: Dictionary<String, AnyObject> = [:]
+    
     fileprivate func detect() {
         detectLoadingHud.textLabel.text = "탐색중"
         detectLoadingHud.show(in: collectionView, animated: true)
         detectLoadingHud.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        let requestURL = "https://rs-privacy.azurewebsites.net/search"
+        let requestURL = "https://rs-privacy.azurewebsites.net/search2"
         let parameters = [
             "naverId": userInfo.naverId,
             "phone": userInfo.phone,
@@ -130,16 +137,33 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         
         Alamofire.request(requestURL, method: .get, parameters: parameters).responseJSON { (response) in
             let result = response.result
+            print(result)
             
-            if let array = result.value as? [AnyObject] {
-                array.forEach({ (value) in
-                    if let dict = value as? Dictionary<String, AnyObject> {
-                        guard dict["numOfContents"] as! Int != 0 else { return }
-                        self.endValue += dict["numOfContents"] as! Double
-                        self.items.append(.init(resultDataDictionary: dict))
-                    }
-                })
+            if let resultDict = result.value as? Dictionary<String, AnyObject> {
+                self.userInfoDict = resultDict["person"] as? Dictionary<String, AnyObject> ?? [:]
+                
+                if let resultArray = resultDict["results"] as? [AnyObject] {
+                    resultArray.forEach({ (value) in
+                        if let dict = value as? Dictionary<String, AnyObject> {
+                            guard dict["numOfContents"] as! Int != 0 else { return }
+                            self.endValue += dict["numOfContents"] as! Double
+                            self.items.append(.init(resultDataDictionary: dict))
+                        }
+                    })
+                }
             }
+            
+//            if let array = result.value as? [AnyObject] {
+//                array.forEach({ (value) in
+//                    print(value)
+//                    if let dict = value as? Dictionary<String, AnyObject> {
+//                        print(dict)
+////                        guard dict["numOfContents"] as! Int != 0 else { return }
+////                        self.endValue += dict["numOfContents"] as! Double
+////                        self.items.append(.init(resultDataDictionary: dict))
+//                    }
+//                })
+//            }
             
             // Detect complete!!
             self.detectLoadingHud.dismiss()
