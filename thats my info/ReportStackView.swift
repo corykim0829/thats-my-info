@@ -11,25 +11,27 @@ import LBTATools
 
 class ReportStackView: UIStackView {
     
-    let buttonsWidthHeightValue: CGFloat = 128
-    let titleFontSize: CGFloat = 24
+    let titleFontSize: CGFloat = 20
     
-    fileprivate func createButton(title: String) -> UIButton {
+    fileprivate func createButton() -> UIButton {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
-        button.setupShadow(opacity: 0.3, radius: 32, offset: .init(width: 16, height: 16), color: .gray)
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1), for: .normal)
+        button.setupShadow(opacity: 0.3, radius: 8, offset: .init(width: 2, height: 2), color: .gray)
+        button.setTitleColor(.clear, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: titleFontSize, weight: .bold)
         button.layer.cornerRadius = 24
         return button
     }
     
-    lazy var infringementButton = createButton(title: "침해")
-    lazy var leakButton = createButton(title: "유출")
-    lazy var feudButton = createButton(title: "분쟁")
-    lazy var collectionButton = createButton(title: "수집")
-    lazy var call118Button = createButton(title: "CALL 118")
+    lazy var infringementButtonlabel = UILabel(text: "개인정보\n침해신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
+    lazy var leakButtonlabel = UILabel(text: "개인정보\n유출신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
+    lazy var feudButtonlabel = UILabel(text: "개인정보\n분쟁신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
+    lazy var collectionButtonlabel = UILabel(text: "개인정보\n수집신고", font: .systemFont(ofSize: titleFontSize, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 2)
+    
+    lazy var infringementButton = createButton()
+    lazy var leakButton = createButton()
+    lazy var feudButton = createButton()
+    lazy var collectionButton = createButton()
     
     lazy var buttonsStackView1: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
@@ -38,7 +40,7 @@ class ReportStackView: UIStackView {
             ])
         sv.axis = .horizontal
         sv.distribution = .fillEqually
-        sv.spacing = 12
+        sv.spacing = 16
         return sv
     }()
     
@@ -49,20 +51,9 @@ class ReportStackView: UIStackView {
             ])
         sv.axis = .horizontal
         sv.distribution = .fillEqually
-        sv.spacing = 12
+        sv.spacing = 16
         return sv
     }()
-    
-//    lazy var mainStackView: UIStackView = {
-//        let sv = UIStackView(arrangedSubviews: [
-//            buttonsStackView1,
-//            buttonsStackView2,
-//            call118Button])
-//        sv.axis = .vertical
-//        sv.distribution = .fill
-//        sv.spacing = 12
-//        return sv
-//    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,22 +64,24 @@ class ReportStackView: UIStackView {
     fileprivate func setupStackView() {
         addArrangedSubview(buttonsStackView1)
         addArrangedSubview(buttonsStackView2)
-        addArrangedSubview(call118Button)
         
         axis = .vertical
-        distribution = .fill
-        spacing = 12
+        distribution = .fillEqually
+        spacing = 16
     }
     
     fileprivate func setupUI() {
         backgroundColor = .clear
         
-        let squareButtons = [infringementButton, leakButton, feudButton, collectionButton]
-        squareButtons.forEach({
-            $0.widthAnchor.constraint(equalTo: $0.heightAnchor).isActive = true
-        })
-        call118Button.heightAnchor.constraint(greaterThanOrEqualToConstant: 88).isActive = true
-        call118Button.titleLabel?.font = .systemFont(ofSize: 28, weight: .bold)
+        let leftPaddingValue:CGFloat = 20
+        infringementButton.addSubview(infringementButtonlabel)
+        infringementButtonlabel.anchor(top: infringementButton.topAnchor, leading: infringementButton.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 26, left: leftPaddingValue, bottom: 0, right: 0))
+        leakButton.addSubview(leakButtonlabel)
+        leakButtonlabel.anchor(top: leakButton.topAnchor, leading: leakButton.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 26, left: leftPaddingValue, bottom: 0, right: 0))
+        feudButton.addSubview(feudButtonlabel)
+        feudButtonlabel.anchor(top: feudButton.topAnchor, leading: feudButton.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 26, left: leftPaddingValue, bottom: 0, right: 0))
+        collectionButton.addSubview(collectionButtonlabel)
+        collectionButtonlabel.anchor(top: collectionButton.topAnchor, leading: collectionButton.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 26, left: leftPaddingValue, bottom: 0, right: 0))
     }
     
     required init(coder: NSCoder) {
