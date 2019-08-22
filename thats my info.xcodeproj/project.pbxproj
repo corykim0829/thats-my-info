@@ -30,6 +30,7 @@
 		38DD9F46230C368C00EF4983 /* ProvisionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F45230C368C00EF4983 /* ProvisionController.swift */; };
 		38DD9F48230C61E900EF4983 /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F47230C61E900EF4983 /* ResultHeaderView.swift */; };
 		38DD9F4D230DCFB800EF4983 /* InfoPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F4C230DCFB800EF4983 /* InfoPostController.swift */; };
+		38FAB369230E7D0900D6292C /* DetectResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAB368230E7D0900D6292C /* DetectResultCell.swift */; };
 		38FC84C423082F8100C375AD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C323082F8100C375AD /* WebViewController.swift */; };
 		38FC84C7230832AE00C375AD /* CustomBackNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C6230832AE00C375AD /* CustomBackNavBar.swift */; };
 		38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FC84C823096D9500C375AD /* DetectAuthController.swift */; };
@@ -87,6 +88,7 @@
 		38DD9F45230C368C00EF4983 /* ProvisionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionController.swift; sourceTree = "<group>"; };
 		38DD9F47230C61E900EF4983 /* ResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
 		38DD9F4C230DCFB800EF4983 /* InfoPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPostController.swift; sourceTree = "<group>"; };
+		38FAB368230E7D0900D6292C /* DetectResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectResultCell.swift; sourceTree = "<group>"; };
 		38FC84C323082F8100C375AD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		38FC84C6230832AE00C375AD /* CustomBackNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackNavBar.swift; sourceTree = "<group>"; };
 		38FC84C823096D9500C375AD /* DetectAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectAuthController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				38FC84C6230832AE00C375AD /* CustomBackNavBar.swift */,
 				38DD9F3E230BE72300EF4983 /* CustomDismissNavBar.swift */,
 				38DD9F47230C61E900EF4983 /* ResultHeaderView.swift */,
+				38FAB368230E7D0900D6292C /* DetectResultCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3893924C2304838E00F14F64 /* ReportStackView.swift in Sources */,
+				38FAB369230E7D0900D6292C /* DetectResultCell.swift in Sources */,
 				38FC84C423082F8100C375AD /* WebViewController.swift in Sources */,
 				387E3D6B23041AE600F1D503 /* InfoCell.swift in Sources */,
 				38FC84D2230ADD2A00C375AD /* NaverAuthController.swift in Sources */,
