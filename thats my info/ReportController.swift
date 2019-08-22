@@ -22,9 +22,10 @@ class ReportController: UIViewController {
     }()
     
     let nameLabel = UILabel(text: "개인정보침해 신고센터", font: .systemFont(ofSize: 24, weight: .bold), textColor: .darkGray, textAlignment: .left, numberOfLines: 1)
-    let discriptionLabel = UILabel(text: "전화 상담 및 원격점검 등을 통해\nPC 악성코드 감염 예방 및 침해사고 피해\n복구를 지원합니다.", font: .systemFont(ofSize: 18, weight: .medium), textColor: .darkGray, textAlignment: .left, numberOfLines: 3)
+    let discriptionLabel = UILabel(text: "전화 상담 및 원격점검 등을 통해\nPC 악성코드 감염 예방 및 침해사고 피해\n복구를 지원합니다.", font: .systemFont(ofSize: 16, weight: .medium), textColor: .darkGray, textAlignment: .left, numberOfLines: 3)
     let timeLabel = UILabel(text: "운영시간 : 연중무휴, 24시간", font: .systemFont(ofSize: 18, weight: .heavy), textColor: .darkGray, textAlignment: .left)
     let callLabel = UILabel(text: "탭하여 전화걸기 (국번없이 118)", font: .systemFont(ofSize: 18, weight: .bold), textColor: #colorLiteral(red: 0.2, green: 0.7294117647, blue: 0.4039215686, alpha: 1), textAlignment: .left)
+    let telelPhoneImageView = UIImageView(image: #imageLiteral(resourceName: "telephone").withRenderingMode(.alwaysOriginal), contentMode: .scaleAspectFill)
     
     let manualReportTitleLabel = UILabel(text: "직접 신고하기", font: .systemFont(ofSize: 24, weight: .heavy), textColor: .white, textAlignment: .left, numberOfLines: 1)
     
@@ -87,11 +88,14 @@ class ReportController: UIViewController {
         call118Button.addSubview(nameLabel)
         nameLabel.anchor(top: call118Button.topAnchor, leading: call118Button.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 22, bottom: 0, right: 0))
         call118Button.addSubview(discriptionLabel)
-        discriptionLabel.anchor(top: nameLabel.bottomAnchor, leading: call118Button.leadingAnchor, bottom: nil, trailing: call118Button.trailingAnchor, padding: .init(top: 4, left: 22, bottom: 0, right: 22))
+        discriptionLabel.anchor(top: nameLabel.bottomAnchor, leading: call118Button.leadingAnchor, bottom: nil, trailing: call118Button.trailingAnchor, padding: .init(top: 8, left: 22, bottom: 0, right: 22))
+        call118Button.addSubview(telelPhoneImageView)
+        telelPhoneImageView.anchor(top: nil, leading: call118Button.leadingAnchor, bottom: call118Button.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 22, bottom: 20, right: 0), size: .init(width: 44, height: 44))
+        
         call118Button.addSubview(callLabel)
-        callLabel.anchor(top: nil, leading: call118Button.leadingAnchor, bottom: call118Button.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 22, bottom: 18, right: 0))
+        callLabel.anchor(top: nil, leading: telelPhoneImageView.trailingAnchor, bottom: call118Button.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 22, bottom: 20, right: 0))
         call118Button.addSubview(timeLabel)
-        timeLabel.anchor(top: nil, leading: call118Button.leadingAnchor, bottom: callLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 22, bottom: 4, right: 0))
+        timeLabel.anchor(top: nil, leading: telelPhoneImageView.trailingAnchor, bottom: callLabel.topAnchor, trailing: nil, padding: .init(top: 0, left: 22, bottom: 4, right: 0))
         
         view.addSubview(manualReportTitleLabel)
         manualReportTitleLabel.anchor(top: call118Button.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 32, left: 28, bottom: 0, right: 0))
