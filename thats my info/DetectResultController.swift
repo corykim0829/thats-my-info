@@ -90,11 +90,20 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         
         setupCollectionViewSettings()
         setupUI()
+        setupNavBarBehavior()
         detect()
         
         // create my CADisplayLink here
         let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
         displayLink.add(to: .main, forMode: .default)
+    }
+    
+    fileprivate func setupNavBarBehavior() {
+        navBar.dismissButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+    }
+    
+    @objc fileprivate func handleDismiss() {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     fileprivate func setupCollectionViewSettings() {
@@ -164,7 +173,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
             "accessToken": userInfo.accessToken
         ]
         
-        Alamofire.request(postURL, method: .post, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(postURL, method: .get, parameters: parameters).responseJSON { (response) in
             print(response)
         }
     }
@@ -172,6 +181,8 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     fileprivate func setupUI() {
         collectionView.scrollIndicatorInsets.top = resultHeaderHeight
         collectionView.contentInset.top = navBarHeight
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         collectionView.addSubview(topToSafeAreaView)
         collectionView.addSubview(navBar)
