@@ -11,7 +11,6 @@ import LBTATools
 class ReportController: UIViewController {
     
     let leftRightPaddingValue: CGFloat = 24
-    let themeColor: UIColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
     
     let titlelabel = UILabel(text: "개인정보 불법 신고", font: .systemFont(ofSize: 18, weight: .bold), textColor: .darkGray, textAlignment: .center)
     let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), tintColor: .darkGray)
