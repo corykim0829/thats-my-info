@@ -18,10 +18,14 @@ struct Result {
 
 class DetectResultCell: LBTAListCell<Result> {
     
+    var subDetectResultController = SubDetectResultController()
+    
     override var item: Result! {
         didSet {
             titleLabel.text = item.title
             numberOfDetectLabel.text = "\(item.numberOfDetect)건"
+            
+            subDetectResultController = SubDetectResultController()
         }
     }
     
@@ -42,12 +46,42 @@ class DetectResultCell: LBTAListCell<Result> {
         containerView.fillSuperview()
         
         containerView.addSubview(titleLabel)
-        titleLabel.anchor(top: nil, leading: containerView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 16, bottom: 0, right: 0))
-        titleLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        titleLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 16, bottom: 0, right: 0))
         
         containerView.addSubview(numberOfDetectLabel)
         numberOfDetectLabel.anchor(top: nil, leading: nil, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 16))
-        numberOfDetectLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        numberOfDetectLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        
+        containerView.addSubview(subDetectResultController.view)
+        subDetectResultController.view.anchor(top: titleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: containerView.bottomAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 8, left: 16, bottom: 8, right: 16))
+    }
+    
+    struct SubResult {
+        let content: String
+    }
+    
+    class SubDetectResultCell: LBTAListCell<SubResult> {
+        override func setupViews() {
+            super.setupViews()
+        }
+    }
+    
+    class SubDetectResultController: LBTAListController<SubDetectResultCell, SubResult>, UICollectionViewDelegateFlowLayout {
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            items = [
+                .init(content: "1"),
+                .init(content: "1"),
+                .init(content: "1"),
+                .init(content: "1")
+            ]
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return .init(width: view.frame.width, height: 44)
+        }
     }
     
 }
@@ -141,7 +175,17 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 64)
+        
+        let estimatedSizeCell = DetectResultCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 88))
+        
+        estimatedSizeCell.item = self.items[indexPath.item]
+        
+        estimatedSizeCell.layoutIfNeeded()
+        
+        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 88))
+//        print("@@@@@#@#@#@", estimatedSize)
+        return .init(width: view.frame.width, height: estimatedSize.height)
+//        return .init(width: view.frame.width, height: 64)
     }
     
     // counting animation label
@@ -166,14 +210,16 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     }
     
     fileprivate func detect() {
-        let postURL = "https://rs-privacy.azurewebsites.net/search"
+        let requestURL = "https://rs-privacy.azurewebsites.net/search"
         let parameters = [
             "naverId": userInfo.naverId,
             "phone": userInfo.phone,
             "accessToken": userInfo.accessToken
         ]
         
-        Alamofire.request(postURL, method: .get, parameters: parameters).responseJSON { (response) in
+        print(parameters)
+        
+        Alamofire.request(requestURL, method: .get, parameters: parameters).responseJSON { (response) in
             print(response)
         }
     }
