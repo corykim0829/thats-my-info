@@ -88,10 +88,13 @@ class DetectResultCell: LBTAListCell<Result> {
                 containerView.backgroundColor = #colorLiteral(red: 0.9684513954, green: 0.3513740689, blue: 0.3031639295, alpha: 1)
             } else if titleLabel.text?.contains("트위터") ?? false {
                 containerView.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
+            } else if titleLabel.text?.contains("빙") ?? false {
+                containerView.backgroundColor = #colorLiteral(red: 0.988819818, green: 0.6654537671, blue: 0.1012271759, alpha: 1)
             } else {
-                let colors = [#colorLiteral(red: 0.988819818, green: 0.6654537671, blue: 0.1012271759, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
-                let randomNumber = arc4random_uniform(2)
-                containerView.backgroundColor = colors[Int(randomNumber)]
+//                let colors = [#colorLiteral(red: 0.988819818, green: 0.6654537671, blue: 0.1012271759, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
+//                let randomNumber = arc4random_uniform(2)
+//                containerView.backgroundColor = colors[Int(randomNumber)]
+                containerView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
             }
             
             let numberOfContents = item.resultDataDictionary["numOfContents"] as? Int ?? 0

@@ -28,13 +28,14 @@ class InfoCell: LBTAListCell<InfoPost> {
         let label = UILabel()
         label.textColor = .white
         label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
     
     var containerView: UIView = {
         let view = UIView(backgroundColor: .purple)
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = 16
+        view.setupShadow(opacity: 0.3, radius: 6, offset: .init(width: 1, height: 1), color: .gray)
         return view
     }()
     
@@ -65,10 +66,10 @@ class InfoCell: LBTAListCell<InfoPost> {
         backgroundColor = .white
         
         addSubview(containerView)
-        containerView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 8))
+        containerView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         
         containerView.addSubview(titleLabel)
-        titleLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 16, bottom: 0, right: 0))
+        titleLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         titleLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
     }
 }

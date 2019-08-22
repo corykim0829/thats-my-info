@@ -13,7 +13,7 @@ class InfoPostController: UIViewController {
     fileprivate let infoPostNavBar: CustomBackNavBar
     fileprivate let infoPostDataDict: Dictionary<String, AnyObject>
     
-    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
+    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1))
     
     fileprivate let categoryLabel = UILabel(text: "", font: .systemFont(ofSize: 18), textColor: .darkGray, textAlignment: .left, numberOfLines: 1)
     fileprivate let contentLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .darkGray, textAlignment: .left, numberOfLines: 0)

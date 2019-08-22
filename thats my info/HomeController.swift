@@ -115,7 +115,7 @@ class HomeController: UIViewController {
         
         let sidePadding: CGFloat = 48
         view.addSubview(toInfoButton)
-        toInfoButton.anchor(top: detectButton.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 88, left: sidePadding, bottom: 0, right: sidePadding))
+        toInfoButton.anchor(top: detectButton.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 80, left: sidePadding, bottom: 0, right: sidePadding))
         view.addSubview(toReportButton)
         toReportButton.anchor(top: toInfoButton.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: sidePadding, bottom: 0, right: sidePadding))
         

@@ -15,7 +15,7 @@ class ResultHeaderView: UICollectionReusableView {
 //    fileprivate let textColor: UIColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
     fileprivate let textColor: UIColor = .darkGray
     
-    lazy var resultLabel = UILabel(text: "당신의 개인정보로 추측되는\n데이터의 개수", font: .systemFont(ofSize: defaultFontSize, weight: .heavy), textColor: textColor, textAlignment: .center, numberOfLines: 2)
+    lazy var resultLabel = UILabel(text: "당신의 개인정보로 추측되는\n데이터의 개수", font: .systemFont(ofSize: defaultFontSize, weight: .heavy), textColor: .gray, textAlignment: .center, numberOfLines: 2)
     lazy var numberOfExposureLabel = UILabel(text: "1234", font: .systemFont(ofSize: 58, weight: .heavy), textColor: textColor, textAlignment: .center, numberOfLines: 1)
 //    lazy var resultDiscriptionLabel = UILabel(text: "건이 노출됐습니다", font: .systemFont(ofSize: defaultFontSize, weight: .heavy), textColor: textColor, textAlignment: .center)
     
