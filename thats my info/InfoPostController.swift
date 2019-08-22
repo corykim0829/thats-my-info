@@ -20,7 +20,7 @@ class InfoPostController: UIViewController {
     
     init(infoPost: InfoPost) {
         infoPostNavBar = CustomBackNavBar(title: infoPost.title)
-        infoPostDataDict = (infoPost.infoPostDataDict)!
+        infoPostDataDict = (infoPost.infoPostDataDict)
         
         super.init(nibName: nil, bundle: nil)
     }

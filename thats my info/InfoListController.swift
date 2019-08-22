@@ -17,7 +17,7 @@ struct InfoTitleUrl {
 struct InfoPost {
     let title: String
     let url: String
-    var infoPostDataDict: Dictionary<String, AnyObject>?
+    var infoPostDataDict: Dictionary<String, AnyObject>
 }
 
 class InfoCell: LBTAListCell<InfoPost> {
@@ -41,6 +41,17 @@ class InfoCell: LBTAListCell<InfoPost> {
     override var item: InfoPost! {
         didSet {
             titleLabel.text = item.title
+            let category = item.infoPostDataDict["category"] as! String
+            switch category {
+            case "PRIVACY_IS":
+                self.containerView.backgroundColor = #colorLiteral(red: 0.9684513954, green: 0.3513740689, blue: 0.3031639295, alpha: 1)
+            case "PRIVACY_RULES_OF_USE":
+                self.containerView.backgroundColor = #colorLiteral(red: 0.988819818, green: 0.6654537671, blue: 0.1012271759, alpha: 1)
+            case "PRIVACY_RULES":
+                self.containerView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7974006738, blue: 0.3821168665, alpha: 1)
+            default:
+                self.containerView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            }
         }
     }
     
@@ -66,17 +77,18 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
     
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     
-    fileprivate lazy var infoNavBar = DocumentNavBar()
+    fileprivate let infoNavBar = DocumentNavBar()
     fileprivate let navBarHeight: CGFloat = 56
     fileprivate let cellHeight: CGFloat = 96
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupUI()
-        setupNavBarBehaviors()
 //        setupTapGesture()
         fetchDatas()
+        setupNavBarBehaviors()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -90,10 +102,10 @@ class InfoListController: LBTAListController<InfoCell, InfoPost>, UICollectionVi
     fileprivate func setupNavBarBehaviors() {
         infoNavBar.searchField.delegate = self
         infoNavBar.backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
-        infoNavBar.searchField.addTarget(self, action: #selector(handleSearch), for: .editingDidEndOnExit)
+        infoNavBar.searchField.addTarget(self, action: #selector(handleTextEnd), for: .editingDidEnd)
     }
     
-    @objc fileprivate func handleSearch(textField: UITextField) {
+    @objc fileprivate func handleTextEnd(textField: UITextField) {
         let cachedItems = items
         items = []
         

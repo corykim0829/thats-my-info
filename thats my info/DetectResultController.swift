@@ -11,45 +11,7 @@ import Alamofire
 import JGProgressHUD
 
 struct Result {
-    var title: String
-    var numberOfDetect: Int
-    var urls: [String]
-}
-
-class DetectResultCell: LBTAListCell<Result> {
-    
-    override var item: Result! {
-        didSet {
-            titleLabel.text = item.title
-            numberOfDetectLabel.text = "\(item.numberOfDetect)건"
-        }
-    }
-    
-    let containerView: UIView = {
-        let view = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
-        view.layer.cornerRadius = 8
-        return view
-    }()
-    
-    let titleLabel = UILabel(text: "네이버", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .left, numberOfLines: 1)
-    
-    let numberOfDetectLabel = UILabel(text: "2건", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .left, numberOfLines: 1)
-    
-    override func setupViews() {
-        super.setupViews()
-        
-        addSubview(containerView)
-        containerView.fillSuperview()
-        
-        containerView.addSubview(titleLabel)
-        titleLabel.anchor(top: nil, leading: containerView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 16, bottom: 0, right: 0))
-        titleLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        
-        containerView.addSubview(numberOfDetectLabel)
-        numberOfDetectLabel.anchor(top: nil, leading: nil, bottom: nil, trailing: containerView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 16))
-        numberOfDetectLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-    }
-    
+    let resultDataDictionary: Dictionary<String, AnyObject>
 }
 
 class DetectResultController: LBTAListController<DetectResultCell, Result>, UICollectionViewDelegateFlowLayout {
@@ -58,6 +20,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     fileprivate let navBarHeight: CGFloat = 48
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     fileprivate let headerId = "headerId"
+    fileprivate let coverView = UIView(backgroundColor: .white)
     
     fileprivate let navBar = CustomDismissNavBar(title: "탐색 결과")
     
@@ -70,23 +33,6 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        items = [
-            .init(title: "NAVER", numberOfDetect: 15, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "GOOGLE", numberOfDetect: 42, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "DAUM", numberOfDetect: 5, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "NAVER BLOG", numberOfDetect: 2, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "DCInside", numberOfDetect: 0, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "FACEBOOK", numberOfDetect: 2, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "NAVER 지식 IN", numberOfDetect: 4, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "NAVER", numberOfDetect: 15, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "GOOGLE", numberOfDetect: 42, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "DAUM", numberOfDetect: 5, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "NAVER BLOG", numberOfDetect: 2, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "DCInside", numberOfDetect: 0, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "FACEBOOK", numberOfDetect: 2, urls: ["https://www.naver.com", "https://www.naver.com"]),
-            .init(title: "NAVER 지식 IN", numberOfDetect: 4, urls: ["https://www.naver.com", "https://www.naver.com"])
-        ]
         
         setupCollectionViewSettings()
         setupUI()
@@ -141,13 +87,23 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 64)
+        
+        let estimatedSizeCell = DetectResultCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 1000))
+        
+        estimatedSizeCell.item = self.items[indexPath.item]
+        
+        estimatedSizeCell.layoutIfNeeded()
+        
+        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 1000))
+//        print(indexPath.item, estimatedSize)
+        return .init(width: view.frame.width, height: estimatedSize.height)
+//        return .init(width: view.frame.width, height: 64)
     }
     
     // counting animation label
     var startValue: Double = 0
-    var endValue: Double = 200
-    let animationDuration: Double = 1
+    var endValue: Double = 0
+    let animationDuration: Double = 2.45
     
     var animationStartDate = Date()
     
@@ -165,17 +121,50 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         }
     }
     
+    let detectLoadingHud = JGProgressHUD(style: .dark)
+    
     fileprivate func detect() {
-        let postURL = "https://rs-privacy.azurewebsites.net/search"
+        detectLoadingHud.textLabel.text = "탐색중"
+        detectLoadingHud.show(in: collectionView, animated: true)
+        detectLoadingHud.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        let requestURL = "https://rs-privacy.azurewebsites.net/search"
         let parameters = [
             "naverId": userInfo.naverId,
             "phone": userInfo.phone,
             "accessToken": userInfo.accessToken
         ]
         
-        Alamofire.request(postURL, method: .get, parameters: parameters).responseJSON { (response) in
-            print(response)
+//        print(parameters)
+        
+//        var resultDictionaryArray: [Dictionary<String, AnyObject>] = []
+        
+        Alamofire.request(requestURL, method: .get, parameters: parameters).responseJSON { (response) in
+            let result = response.result
+            
+            if let array = result.value as? [AnyObject] {
+                array.forEach({ (value) in
+                    if let dict = value as? Dictionary<String, AnyObject> {
+//                        resultDictionaryArray.append(dict)
+                        guard dict["numOfContents"] as! Int != 0 else { return }
+                        self.endValue += dict["numOfContents"] as! Double
+                        self.items.append(.init(resultDataDictionary: dict))
+//                        print(dict)
+                    }
+                })
+            }
+            
+            // Detect complete!!
+            self.detectLoadingHud.dismiss()
+            self.coverView.isHidden = true
+            self.startCountingAnimation()
         }
+    }
+    
+    fileprivate func startCountingAnimation() {
+        animationStartDate = Date()
+        let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
+        displayLink.add(to: .main, forMode: .default)
     }
     
     fileprivate func setupUI() {
@@ -189,6 +178,9 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         navBar.anchor(top: topToSafeAreaView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: navBarHeight))
         
         topToSafeAreaView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor)
+        
+        collectionView.addSubview(coverView)
+        coverView.anchor(top: navBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     }
 
     required init?(coder aDecoder: NSCoder) {
