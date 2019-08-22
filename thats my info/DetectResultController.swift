@@ -16,7 +16,7 @@ struct Result {
 
 class DetectResultController: LBTAListController<DetectResultCell, Result>, UICollectionViewDelegateFlowLayout {
     
-    fileprivate let resultHeaderHeight: CGFloat = 200
+    fileprivate let resultHeaderHeight: CGFloat = 208
     fileprivate let navBarHeight: CGFloat = 48
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1))
     fileprivate let headerId = "headerId"
@@ -38,10 +38,10 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         setupUI()
         setupNavBarBehavior()
         detect()
-        
-        // create my CADisplayLink here
-        let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
-        displayLink.add(to: .main, forMode: .default)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        startCountingAnimation()
     }
     
     fileprivate func setupNavBarBehavior() {
@@ -64,12 +64,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? ResultHeaderView
-        setupHeader(headerView!)
         return headerView!
-    }
-    
-    override func setupHeader(_ header: UICollectionReusableView) {
-        headerView?.countingStartButton.addTarget(self, action: #selector(handleStartC), for: .touchUpInside)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -80,10 +75,10 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         view.layer.zPosition = -1
     }
     
-    @objc fileprivate func handleStartC() {
-        animationStartDate = Date()
-        let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
-        displayLink.add(to: .main, forMode: .default)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let result = items[indexPath.item]
+        let detectResultActionController = DetectResultActionController(resultDataDictionary: result.resultDataDictionary)
+        navigationController?.pushViewController(detectResultActionController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -103,7 +98,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     // counting animation label
     var startValue: Double = 0
     var endValue: Double = 0
-    let animationDuration: Double = 2.45
+    let animationDuration: Double = 2
     
     var animationStartDate = Date()
     
@@ -121,7 +116,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         }
     }
     
-    let detectLoadingHud = JGProgressHUD(style: .dark)
+    let detectLoadingHud = JGProgressHUD(style: .light)
     
     fileprivate func detect() {
         detectLoadingHud.textLabel.text = "탐색중"
@@ -135,21 +130,15 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
             "accessToken": userInfo.accessToken
         ]
         
-//        print(parameters)
-        
-//        var resultDictionaryArray: [Dictionary<String, AnyObject>] = []
-        
         Alamofire.request(requestURL, method: .get, parameters: parameters).responseJSON { (response) in
             let result = response.result
             
             if let array = result.value as? [AnyObject] {
                 array.forEach({ (value) in
                     if let dict = value as? Dictionary<String, AnyObject> {
-//                        resultDictionaryArray.append(dict)
                         guard dict["numOfContents"] as! Int != 0 else { return }
                         self.endValue += dict["numOfContents"] as! Double
                         self.items.append(.init(resultDataDictionary: dict))
-//                        print(dict)
                     }
                 })
             }

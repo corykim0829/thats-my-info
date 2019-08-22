@@ -49,8 +49,8 @@ class HomeStackView: UIView {
     
     lazy var buttonsStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
-            toReportButton,
-            toDocumentButton
+            toDocumentButton,
+            toReportButton
             ])
         sv.axis = .horizontal
         sv.distribution = .fillEqually
