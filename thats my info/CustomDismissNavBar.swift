@@ -13,12 +13,13 @@ class CustomDismissNavBar: UIView {
     let titleLabel = UILabel(text: "title", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
     let dismissButton = UIButton(image: #imageLiteral(resourceName: "dismiss_button_bold").withRenderingMode(.alwaysOriginal), tintColor: .white)
     
-    init(title: String) {
+    init(title: String, backgroundColor: UIColor, tintColor: UIColor) {
         super.init(frame: .zero)
         
         titleLabel.text = title
-        
-        backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
+        titleLabel.textColor = tintColor
+        dismissButton.tintColor = tintColor
+        self.backgroundColor = backgroundColor
         
         setupUI()
     }

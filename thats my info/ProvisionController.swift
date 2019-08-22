@@ -10,7 +10,7 @@ import UIKit
 
 class ProvisionController: UIViewController {
 
-    fileprivate let customDismissNavBar = CustomDismissNavBar(title: "개인정보 이용약관")
+    fileprivate let customDismissNavBar = CustomDismissNavBar(title: "개인정보 이용약관", backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1), tintColor: .white)
     fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1))
     
     lazy var provisionTextView: UITextView = {

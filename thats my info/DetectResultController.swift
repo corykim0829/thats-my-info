@@ -18,11 +18,11 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     
     fileprivate let resultHeaderHeight: CGFloat = 208
     fileprivate let navBarHeight: CGFloat = 48
-    fileprivate let topToSafeAreaView = UIView(backgroundColor: #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1))
     fileprivate let headerId = "headerId"
     fileprivate let coverView = UIView(backgroundColor: .white)
     
-    fileprivate let navBar = CustomDismissNavBar(title: "탐색 결과")
+    fileprivate let topToSafeAreaView = UIView(backgroundColor: .white)
+    fileprivate let navBar = CustomDismissNavBar(title: "탐색 결과", backgroundColor: .white, tintColor: .darkGray)
     
     fileprivate var userInfo: UserInfo
     
@@ -68,7 +68,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
@@ -90,9 +90,7 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         estimatedSizeCell.layoutIfNeeded()
         
         let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 1000))
-//        print(indexPath.item, estimatedSize)
         return .init(width: view.frame.width, height: estimatedSize.height)
-//        return .init(width: view.frame.width, height: 64)
     }
     
     // counting animation label
@@ -157,16 +155,15 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     }
     
     fileprivate func setupUI() {
-        collectionView.scrollIndicatorInsets.top = resultHeaderHeight
+        collectionView.scrollIndicatorInsets.top = navBarHeight
         collectionView.contentInset.top = navBarHeight
         
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         collectionView.addSubview(topToSafeAreaView)
-        collectionView.addSubview(navBar)
-        navBar.anchor(top: topToSafeAreaView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: navBarHeight))
-        
         topToSafeAreaView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor)
+        collectionView.addSubview(navBar)
+        navBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: navBarHeight))
         
         collectionView.addSubview(coverView)
         coverView.anchor(top: navBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)

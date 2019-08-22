@@ -10,35 +10,35 @@ import UIKit
 
 class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     
-    let titleLabel = UILabel(text: "상세정보 입력", font: .systemFont(ofSize: 20, weight: .bold), textColor: .white, textAlignment: .center)
+    let titleLabel = UILabel(text: "상세정보 입력", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .center)
     let backButton = UIButton(image: #imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), tintColor: .white)
     
-    let naverIdLabel = UILabel(text: " 네이버 아이디", font: .systemFont(ofSize: 20, weight: .bold), textColor: .white, textAlignment: .left)
-    let naverIdDiscriptionLabel = UILabel(text: " @naver.com을 제외한 ID를 적어주세요", font: .systemFont(ofSize: 16, weight: .light), textColor: .white, textAlignment: .left)
+    let naverIdLabel = UILabel(text: " 네이버 아이디", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .left)
+    let naverIdDiscriptionLabel = UILabel(text: " @naver.com을 제외한 ID를 적어주세요", font: .systemFont(ofSize: 14, weight: .light), textColor: .white, textAlignment: .left)
     let naverIdTextField: UITextField = {
         let tf = CustomTextField(padding: 16)
-        tf.layer.cornerRadius = 8
+        tf.layer.cornerRadius = 14
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.constrainHeight(40)
         return tf
     }()
     
-    let phoneLabel = UILabel(text: " 핸드폰 번호", font: .systemFont(ofSize: 20, weight: .bold), textColor: .white, textAlignment: .left)
+    let phoneLabel = UILabel(text: " 핸드폰 번호", font: .systemFont(ofSize: 18, weight: .bold), textColor: .white, textAlignment: .left)
     let phoneDiscriptionLabel = UILabel(text: " 010-1234-5678 형식으로 적어주세요", font: .systemFont(ofSize: 16, weight: .light), textColor: .white, textAlignment: .left)
     let phoneTextField: UITextField = {
         let tf = CustomTextField(padding: 16)
         tf.constrainHeight(40)
-        tf.layer.cornerRadius = 8
+        tf.layer.cornerRadius = 14
         tf.keyboardType = .phonePad
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return tf
     }()
     
     let toNaverAuthButton: UIButton = {
-       let button = UIButton(title: "네이버 본인인증", titleColor: .white, font: .systemFont(ofSize: 18, weight: .bold), backgroundColor: #colorLiteral(red: 0.1776808647, green: 0.8088077911, blue: 0.4675460188, alpha: 1))
+       let button = UIButton(title: "네이버 본인인증", titleColor: .white, font: .systemFont(ofSize: 17, weight: .bold), backgroundColor: #colorLiteral(red: 0.1776808647, green: 0.8088077911, blue: 0.4675460188, alpha: 1))
         button.addTarget(self, action: #selector(handleToNaverAuth), for: .touchUpInside)
         button.constrainHeight(48)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 14
         return button
     }()
     
@@ -53,10 +53,10 @@ class DetectAuthController: UIViewController, NaverAuthControllerDelegate {
     }
     
     let doDetectButton: UIButton = {
-        let button = UIButton(title: "탐색 시작", titleColor: .white, font: .systemFont(ofSize: 18, weight: .bold), backgroundColor: .lightGray, target: self, action: #selector(handleDoDetect))
+        let button = UIButton(title: "탐색 시작", titleColor: .white, font: .systemFont(ofSize: 17, weight: .bold), backgroundColor: .lightGray, target: self, action: #selector(handleDoDetect))
         button.constrainHeight(48)
         button.setTitleColor(.darkGray, for: .disabled)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 14
         button.isEnabled = false
         return button
     }()
