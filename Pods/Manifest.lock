@@ -1,20 +1,24 @@
 PODS:
+  - Alamofire (4.8.2)
   - JGProgressHUD (2.0.3)
   - LBTATools (1.0.6)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.4)
   - JGProgressHUD
   - LBTATools
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - JGProgressHUD
     - LBTATools
 
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   LBTATools: ab52bd47d7e4e31eff1bdf72f4d92829a7d029e1
 
-PODFILE CHECKSUM: ca458dff39a21e1057a085b87a6f55f84c06baf7
+PODFILE CHECKSUM: 154bf85f12b181da6f6385656719c188997b1c99
 
 COCOAPODS: 1.6.1
