@@ -13,14 +13,27 @@ import JGProgressHUD
 class DetectResultActionController: UIViewController, WKNavigationDelegate {
 
     fileprivate let resultDataDictionary: Dictionary<String, AnyObject>
+    fileprivate let userInfoDict: Dictionary<String, AnyObject>
     
-    var webView = WKWebView()
-    var detectResultActionUrl: String
+    let webView = WKWebView()
+    let detectResultActionUrl: String
     let themeColor: UIColor = #colorLiteral(red: 0.1333333333, green: 0.5889699587, blue: 0.9647058824, alpha: 1)
     
-    var customBackNavBar: CustomBackNavBar
+    let customBackNavBar: CustomBackNavBar
     
     lazy var topToSafeAreaView = UIView(backgroundColor: themeColor)
+    
+    init(userInfoDict: Dictionary<String, AnyObject>, resultDataDictionary: Dictionary<String, AnyObject>) {
+        self.resultDataDictionary = resultDataDictionary
+        self.userInfoDict = userInfoDict
+        let title = resultDataDictionary["siteName"] as! String
+        customBackNavBar = CustomBackNavBar(title: title)
+        
+        let url = resultDataDictionary["url"] as! String
+        detectResultActionUrl = url
+        
+        super.init(nibName: nil, bundle: nil)
+    }
     
     fileprivate func createBottomButton(title: String, action: Selector) -> UIButton {
         let button = UIButton(title: title, titleColor: .white, font: .systemFont(ofSize: 18, weight: .bold), backgroundColor: themeColor, target: self, action: action)
@@ -40,23 +53,39 @@ class DetectResultActionController: UIViewController, WKNavigationDelegate {
     }()
     
     @objc fileprivate func handleMeasure() {
-        
+        let title = resultDataDictionary["siteName"] as! String
+        if title.contains("네이버") {
+            print("네이버 조치")
+            
+            let url = "https://help.naver.com/support/contents/contents.help?serviceNo=964&categoryNo=2826&contentsNo=13342&interactiveMainNo=12600"
+            if let url = URL(string: url) {
+                let request = URLRequest(url: url)
+                webView.load(request)
+            }
+            
+        } else {
+            let alert = UIAlertController(title: "", message: "아직 준비중입니다", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "확인", style: .cancel)
+            alert.addAction(defaultAction)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc fileprivate func handleReport() {
         
+        let alert = UIAlertController(title: "신고", message: "현재 보고있는 화면이 신고 url로 들어갑니다.\n신고하고자하는 화면으로 이동해주세요", preferredStyle: UIAlertController.Style.alert)
+        let defaultAction = UIAlertAction(title: "확인", style: .default, handler: handleToReport)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
-    init(resultDataDictionary: Dictionary<String, AnyObject>) {
-        self.resultDataDictionary = resultDataDictionary
-        let title = resultDataDictionary["siteName"] as! String
-        customBackNavBar = CustomBackNavBar(title: title)
-        customBackNavBar.titleLabel.font = .systemFont(ofSize: 12)
-        
-        let url = resultDataDictionary["url"] as! String
-        detectResultActionUrl = url
-        
-        super.init(nibName: nil, bundle: nil)
+    fileprivate func handleToReport(alert: UIAlertAction) {
+        if let currentUrl = webView.url {
+            let resultReportFormController = ResultReportFormController(userInfoDict: userInfoDict, resultDataDictionary: resultDataDictionary, currentUrl: currentUrl.absoluteString)
+            present(resultReportFormController, animated: true, completion: nil)
+        }
     }
     
     let webLoadingHud = JGProgressHUD(style: .light)

@@ -23,6 +23,8 @@
 		389392462304704500F14F64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389392452304704500F14F64 /* CustomTextField.swift */; };
 		3893924A23047CB700F14F64 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924923047CB700F14F64 /* ReportController.swift */; };
 		3893924C2304838E00F14F64 /* ReportStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924B2304838E00F14F64 /* ReportStackView.swift */; };
+		38C04562230F5BF70062E6CF /* ResultReportFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C04561230F5BF70062E6CF /* ResultReportFormController.swift */; };
+		38C04564230F69000062E6CF /* ResultWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C04563230F69000062E6CF /* ResultWebViewController.swift */; };
 		38DD9F3F230BE72300EF4983 /* CustomDismissNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F3E230BE72300EF4983 /* CustomDismissNavBar.swift */; };
 		38DD9F42230BF20800EF4983 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F41230BF20800EF4983 /* AuthViewModel.swift */; };
 		38DD9F44230BF2DA00EF4983 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9F43230BF2DA00EF4983 /* Bindable.swift */; };
@@ -81,6 +83,8 @@
 		389392452304704500F14F64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3893924923047CB700F14F64 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		3893924B2304838E00F14F64 /* ReportStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStackView.swift; sourceTree = "<group>"; };
+		38C04561230F5BF70062E6CF /* ResultReportFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultReportFormController.swift; sourceTree = "<group>"; };
+		38C04563230F69000062E6CF /* ResultWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWebViewController.swift; sourceTree = "<group>"; };
 		38DD9F3E230BE72300EF4983 /* CustomDismissNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissNavBar.swift; sourceTree = "<group>"; };
 		38DD9F41230BF20800EF4983 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		38DD9F43230BF2DA00EF4983 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
@@ -258,8 +262,10 @@
 				38FC84C823096D9500C375AD /* DetectAuthController.swift */,
 				38FC84D3230AEE4C00C375AD /* DetectResultController.swift */,
 				38FAB36A230E8AB400D6292C /* DetectResultActionController.swift */,
+				38C04561230F5BF70062E6CF /* ResultReportFormController.swift */,
 				38FC84D1230ADD2A00C375AD /* NaverAuthController.swift */,
 				38DD9F45230C368C00EF4983 /* ProvisionController.swift */,
+				38C04563230F69000062E6CF /* ResultWebViewController.swift */,
 			);
 			name = Detect;
 			sourceTree = "<group>";
@@ -535,9 +541,11 @@
 				38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */,
 				38DD9F48230C61E900EF4983 /* ResultHeaderView.swift in Sources */,
 				381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */,
+				38C04562230F5BF70062E6CF /* ResultReportFormController.swift in Sources */,
 				389392462304704500F14F64 /* CustomTextField.swift in Sources */,
 				38DD9F3F230BE72300EF4983 /* CustomDismissNavBar.swift in Sources */,
 				38FC84CB23096F7400C375AD /* UserInfo.swift in Sources */,
+				38C04564230F69000062E6CF /* ResultWebViewController.swift in Sources */,
 				38DD9F42230BF20800EF4983 /* AuthViewModel.swift in Sources */,
 				3893924A23047CB700F14F64 /* ReportController.swift in Sources */,
 				38FC84D4230AEE4C00C375AD /* DetectResultController.swift in Sources */,

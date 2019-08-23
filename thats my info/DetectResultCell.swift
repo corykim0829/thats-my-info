@@ -7,6 +7,7 @@
 //
 
 import LBTATools
+import WebKit
 
 class DetectResultCell: LBTAListCell<Result> {
     
@@ -87,9 +88,9 @@ class DetectResultCell: LBTAListCell<Result> {
             contentContainerView.fillSuperview()
             contentContainerView.addSubview(contentTextView)
             contentTextView.fillSuperview(padding: .init(top: 8, left: 8, bottom: 8, right: 8))
-            contentContainerView.addSubview(toUrlButton)
+//            contentContainerView.addSubview(toUrlButton)
 //            toUrlButton.fillSuperview()
-            toUrlButton.anchor(top: contentContainerView.topAnchor, leading: nil, bottom: contentContainerView.bottomAnchor, trailing: contentContainerView.trailingAnchor, size: .init(width: 44, height: 0))
+//            toUrlButton.anchor(top: contentContainerView.topAnchor, leading: nil, bottom: contentContainerView.bottomAnchor, trailing: contentContainerView.trailingAnchor, size: .init(width: 44, height: 0))
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -136,9 +137,9 @@ class DetectResultCell: LBTAListCell<Result> {
                 contentsDicts.forEach { (contentDict) in
                     let customContentView = CustomContentView(contentDict: contentDict)
                     customContentView.contentTextView.text = contentDict["content"] as! String
-                    customContentView.toUrlButton.titleLabel?.text = contentDict["url"] as! String
-                    print(customContentView.toUrlButton.titleLabel?.text)
-                    customContentView.toUrlButton.addTarget(self, action: #selector(handleTapToUrl), for: .touchUpInside)
+//                    customContentView.toUrlButton.titleLabel?.text = contentDict["url"] as! String
+//                    print(customContentView.toUrlButton.titleLabel?.text)
+//                    customContentView.toUrlButton.addTarget(self, action: #selector(handleTapToUrl), for: .touchUpInside)
                     stackView.addArrangedSubview(customContentView)
                 }
             }
@@ -161,8 +162,9 @@ class DetectResultCell: LBTAListCell<Result> {
     @objc fileprivate func handleTapToUrl(button: UIButton) {
         let url = button.titleLabel?.text
         //            let result = items[indexPath.item]
-        let detectResultActionController = DetectResultActionController(resultDataDictionary: ["siteName": url as AnyObject, "url": url as AnyObject])
-        self.parentController?.navigationController?.pushViewController(detectResultActionController, animated: true)
+//        let detectResultActionController = DetectResultActionController(resultDataDictionary: ["siteName": url as AnyObject, "url": url as AnyObject])
+        let test = WebViewController(url: url!, title: url!)
+        self.parentController?.navigationController?.pushViewController(test, animated: true)
     }
     
     override func setupViews() {

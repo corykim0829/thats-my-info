@@ -76,15 +76,13 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
         return UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        view.layer.zPosition = -1
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let result = items[indexPath.item]
+//        let test = ResultWebViewController(userInfoDict: userInfoDict, resultDataDictionary: result.resultDataDictionary)
+//        navigationController?.pushViewController(test, animated: true)
+        let detectResultActionController = DetectResultActionController(userInfoDict: userInfoDict, resultDataDictionary: result.resultDataDictionary)
+        navigationController?.pushViewController(detectResultActionController, animated: true)
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let result = items[indexPath.item]
-//        let detectResultActionController = DetectResultActionController(resultDataDictionary: result.resultDataDictionary)
-//        navigationController?.pushViewController(detectResultActionController, animated: true)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
