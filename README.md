@@ -8,9 +8,14 @@
 </p>
 
 <br/>
+
+<p align="center">
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen1.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen2.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen3.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen4.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen5.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen6.png" width="200px" /> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen7.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen8.png" width="200px">
+</p>
+
 <br/>
 
-### Key Features
+### Functions
 
 - 웹상의 노출된 개인정보 탐색 및 삭제
   - 본인 인증 후 주요 포털에 노출된 개인정보 탐색
@@ -27,7 +32,7 @@
 
 ### Team
 
-- iOS - 1
+- **iOS, UX/UI - 1** :raising_hand_man:
 
 - Back-end - 3
 
@@ -35,7 +40,8 @@
 
 ### 디자인 패턴
 
-MVVM
+- MVVM
+  - Reactive Programming - Detect를 위한 본인인증 Controller
 
 <br/>
 
@@ -43,12 +49,6 @@ MVVM
 
 gitHub의 issue, project를 사용한 업무처리
 
-<br/>
-
-### Screenshots
-<p align="center">
-<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen1.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen2.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen3.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen4.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen5.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen6.png" width="200px" /> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen7.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen8.png" width="200px">
-</p>
 <br/>
 
 
