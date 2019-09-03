@@ -1,10 +1,13 @@
-## 님아 그것은 내정보
+<h2 align="center">
+  님아 그것은 내정보
+</h2>
 
 <p align="center">
-![swift](<https://img.shields.io/badge/swift-5.0-orange.svg>) ![platform](<https://img.shields.io/badge/platform-iOS-9cf.svg>) ![LBTATools](<https://img.shields.io/badge/LBTATools-blue.svg>) ![Alamofire](<https://img.shields.io/badge/Alamofire-red.svg>) ![naver](<https://img.shields.io/badge/Naver Login Auth-green.svg>)
+<img src="https://img.shields.io/badge/swift-5.0-orange.svg"> <img src="https://img.shields.io/badge/platform-iOS-9cf.svg"> <img src="https://img.shields.io/badge/LBTATools-blue.svg"> <img src="https://img.shields.io/badge/Alamofire-red.svg"> <img src="https://img.shields.io/badge/Naver Login Auth-green.svg">
 <p align="center">내 개인정보는 내가 지킨다!</p>
 </p>
 
+<br/>
 <br/>
 
 ### Key Features
@@ -45,7 +48,7 @@ gitHub의 issue, project를 사용한 업무처리
 ### Screenshots
 <p align="center">
 <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen1.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen2.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen3.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen4.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen5.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen6.png" width="200px" /> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen7.png" width="200px"> <img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen8.png" width="200px">
-<\p>
+</p>
 <br/>
 
 
