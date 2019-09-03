@@ -43,21 +43,21 @@ gitHub의 issue, project를 사용한 업무처리
 
 ### Screenshots
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen1.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen1.png" width="200px" />
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen2.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen2.png" width="200px" />
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen3.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen3.png" width="200px" />
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen4.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen4.png" width="200px" />
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen5.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen5.png" width="200px" />
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen6.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen6.png" width="200px" />
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen7.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen7.png" width="200px" />
 
-<img src="https://github.com/corykim0829/thats-my-info/tree/master/screenshots/screen8.png" width="200px" />
+<img src="https://github.com/corykim0829/thats-my-info/blob/master/screenshots/screen8.png" width="200px" />
 
 
 
