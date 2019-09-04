@@ -99,8 +99,6 @@ class HomeController: UIViewController {
         view.addSubview(titlelabel)
         titlelabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 24, left: 0, bottom: 0, right: 0))
         
-//        view.addSubview(homeStackView)
-//        homeStackView.centerInSuperview()
         view.addSubview(detectButton)
         detectButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         detectButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -32).isActive = true
@@ -125,7 +123,5 @@ class HomeController: UIViewController {
             backgroundView.addSubview($0)
             $0.centerInSuperview()
         })
-        
-//        , createCircle(value: 850, color: #colorLiteral(red: 0.1333333333, green: 0.4039215686, blue: 0.9647058824, alpha: 1))
     }
 }

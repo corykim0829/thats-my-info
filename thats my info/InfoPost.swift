@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct InfoPost {
+    let title: String
+    let url: String
+    var infoPostDataDict: Dictionary<String, AnyObject>
+}

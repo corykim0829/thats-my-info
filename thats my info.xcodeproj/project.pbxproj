@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22EF86D8CB668A8FF637D3FF /* Pods_thats_my_infoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C0DF2E839B8648318DBAFE /* Pods_thats_my_infoUITests.framework */; };
 		381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381F6C9E2302A1F000682EE7 /* HomeController.swift */; };
+		3832A268232000260085FB26 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832A267232000260085FB26 /* Result.swift */; };
 		38511382230006C3009998AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38511381230006C3009998AF /* AppDelegate.swift */; };
 		38511384230006C3009998AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38511383230006C3009998AF /* ViewController.swift */; };
 		38511387230006C3009998AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38511385230006C3009998AF /* Main.storyboard */; };
@@ -18,7 +19,7 @@
 		385113A2230006C7009998AF /* thats_my_infoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385113A1230006C7009998AF /* thats_my_infoUITests.swift */; };
 		387E3D692304181900F1D503 /* InfoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D682304181900F1D503 /* InfoListController.swift */; };
 		387E3D6B23041AE600F1D503 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D6A23041AE600F1D503 /* InfoCell.swift */; };
-		387E3D6D23041B8300F1D503 /* InfoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D6C23041B8300F1D503 /* InfoCategory.swift */; };
+		387E3D6D23041B8300F1D503 /* InfoPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E3D6C23041B8300F1D503 /* InfoPost.swift */; };
 		3893924423045B5A00F14F64 /* DocumentNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924323045B5A00F14F64 /* DocumentNavBar.swift */; };
 		389392462304704500F14F64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389392452304704500F14F64 /* CustomTextField.swift */; };
 		3893924A23047CB700F14F64 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893924923047CB700F14F64 /* ReportController.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		202FCBC625422CB99F200978 /* Pods-thats my info.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thats my info.release.xcconfig"; path = "Target Support Files/Pods-thats my info/Pods-thats my info.release.xcconfig"; sourceTree = "<group>"; };
 		381F6C9E2302A1F000682EE7 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		3832A267232000260085FB26 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		3851137E230006C3009998AF /* thats my info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "thats my info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38511381230006C3009998AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38511383230006C3009998AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 		385113A3230006C7009998AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		387E3D682304181900F1D503 /* InfoListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListController.swift; sourceTree = "<group>"; };
 		387E3D6A23041AE600F1D503 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
-		387E3D6C23041B8300F1D503 /* InfoCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCategory.swift; sourceTree = "<group>"; };
+		387E3D6C23041B8300F1D503 /* InfoPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPost.swift; sourceTree = "<group>"; };
 		3893924323045B5A00F14F64 /* DocumentNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentNavBar.swift; sourceTree = "<group>"; };
 		389392452304704500F14F64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3893924923047CB700F14F64 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
@@ -140,8 +142,9 @@
 		381F6C9B2302A1C400682EE7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				387E3D6C23041B8300F1D503 /* InfoCategory.swift */,
+				387E3D6C23041B8300F1D503 /* InfoPost.swift */,
 				38FC84CA23096F7400C375AD /* UserInfo.swift */,
+				3832A267232000260085FB26 /* Result.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3832A268232000260085FB26 /* Result.swift in Sources */,
 				3893924C2304838E00F14F64 /* ReportStackView.swift in Sources */,
 				38FAB369230E7D0900D6292C /* DetectResultCell.swift in Sources */,
 				38FC84C423082F8100C375AD /* WebViewController.swift in Sources */,
@@ -537,7 +541,7 @@
 				38FC84C7230832AE00C375AD /* CustomBackNavBar.swift in Sources */,
 				38511382230006C3009998AF /* AppDelegate.swift in Sources */,
 				387E3D692304181900F1D503 /* InfoListController.swift in Sources */,
-				387E3D6D23041B8300F1D503 /* InfoCategory.swift in Sources */,
+				387E3D6D23041B8300F1D503 /* InfoPost.swift in Sources */,
 				38FC84C923096D9500C375AD /* DetectAuthController.swift in Sources */,
 				38DD9F48230C61E900EF4983 /* ResultHeaderView.swift in Sources */,
 				381F6C9F2302A1F000682EE7 /* HomeController.swift in Sources */,

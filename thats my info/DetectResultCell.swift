@@ -76,21 +76,12 @@ class DetectResultCell: LBTAListCell<Result> {
             setupUI()
         }
         
-//        override init(frame: CGRect) {
-//            super.init(frame: frame)
-//
-//            setupUI()
-//        }
-        
         fileprivate func setupUI() {
             backgroundColor = .clear
             addSubview(contentContainerView)
             contentContainerView.fillSuperview()
             contentContainerView.addSubview(contentTextView)
             contentTextView.fillSuperview(padding: .init(top: 8, left: 8, bottom: 8, right: 8))
-//            contentContainerView.addSubview(toUrlButton)
-//            toUrlButton.fillSuperview()
-//            toUrlButton.anchor(top: contentContainerView.topAnchor, leading: nil, bottom: contentContainerView.bottomAnchor, trailing: contentContainerView.trailingAnchor, size: .init(width: 44, height: 0))
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -112,19 +103,13 @@ class DetectResultCell: LBTAListCell<Result> {
             } else if titleLabel.text?.contains("빙") ?? false {
                 containerView.backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.6666666667, blue: 0.1019607843, alpha: 1)
             } else {
-//                let colors = [#colorLiteral(red: 0.988819818, green: 0.6654537671, blue: 0.1012271759, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
-//                let randomNumber = arc4random_uniform(2)
-//                containerView.backgroundColor = colors[Int(randomNumber)]
                 containerView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
             }
             
             let numberOfContents = item.resultDataDictionary["numOfContents"] as? Int ?? 0
             numberOfDetectLabel.text = "\(numberOfContents)건"
             
-//            contents = item.resultDataDictionary["contents"] as! [String]
-            
             // contents
-            
             if let contentsDicts = item.resultDataDictionary["contents"] as? [Dictionary<String, AnyObject>] {
                 var contentsList: String = ""
                 contentsDicts.forEach { (dict) in
@@ -137,32 +122,14 @@ class DetectResultCell: LBTAListCell<Result> {
                 contentsDicts.forEach { (contentDict) in
                     let customContentView = CustomContentView(contentDict: contentDict)
                     customContentView.contentTextView.text = contentDict["content"] as! String
-//                    customContentView.toUrlButton.titleLabel?.text = contentDict["url"] as! String
-//                    print(customContentView.toUrlButton.titleLabel?.text)
-//                    customContentView.toUrlButton.addTarget(self, action: #selector(handleTapToUrl), for: .touchUpInside)
                     stackView.addArrangedSubview(customContentView)
                 }
             }
-//            var contentsList: String = ""
-//            contents.forEach { (_) in
-//                let twoLinesText = "HELLO\nGOODBYE"
-//                contentsList += twoLinesText + "\n"
-//            }
-//            textView.text = contentsList
-//
-//            stackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-//            contents.forEach { (content) in
-//                let customContentView = CustomContentView()
-//                customContentView.contentTextView.text = content
-//                stackView.addArrangedSubview(customContentView)
-//            }
         }
     }
     
     @objc fileprivate func handleTapToUrl(button: UIButton) {
         let url = button.titleLabel?.text
-        //            let result = items[indexPath.item]
-//        let detectResultActionController = DetectResultActionController(resultDataDictionary: ["siteName": url as AnyObject, "url": url as AnyObject])
         let test = WebViewController(url: url!, title: url!)
         self.parentController?.navigationController?.pushViewController(test, animated: true)
     }

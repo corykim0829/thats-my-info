@@ -10,10 +10,6 @@ import LBTATools
 import Alamofire
 import JGProgressHUD
 
-struct Result {
-    let resultDataDictionary: Dictionary<String, AnyObject>
-}
-
 class DetectResultController: LBTAListController<DetectResultCell, Result>, UICollectionViewDelegateFlowLayout {
     
     fileprivate let resultHeaderHeight: CGFloat = 208
@@ -78,8 +74,6 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let result = items[indexPath.item]
-//        let test = ResultWebViewController(userInfoDict: userInfoDict, resultDataDictionary: result.resultDataDictionary)
-//        navigationController?.pushViewController(test, animated: true)
         let detectResultActionController = DetectResultActionController(userInfoDict: userInfoDict, resultDataDictionary: result.resultDataDictionary)
         navigationController?.pushViewController(detectResultActionController, animated: true)
     }
@@ -150,18 +144,6 @@ class DetectResultController: LBTAListController<DetectResultCell, Result>, UICo
                     })
                 }
             }
-            
-//            if let array = result.value as? [AnyObject] {
-//                array.forEach({ (value) in
-//                    print(value)
-//                    if let dict = value as? Dictionary<String, AnyObject> {
-//                        print(dict)
-////                        guard dict["numOfContents"] as! Int != 0 else { return }
-////                        self.endValue += dict["numOfContents"] as! Double
-////                        self.items.append(.init(resultDataDictionary: dict))
-//                    }
-//                })
-//            }
             
             // Detect complete!!
             self.detectLoadingHud.dismiss()

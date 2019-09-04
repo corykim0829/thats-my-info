@@ -81,9 +81,6 @@ class ResultWebViewController: UIViewController, WKNavigationDelegate {
         view.addSubview(customBackNavBar)
         customBackNavBar.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: .init(width: 0, height: 48))
         
-//        view.addSubview(bottomStackView)
-//        bottomStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 64))
-        
         view.addSubview(webView)
         webView.anchor(top: customBackNavBar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     }
