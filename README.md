@@ -47,20 +47,22 @@
 
 ### git flow
 
-gitHub의 issue, project를 사용한 업무처리
+- gitHub의 issue, project를 사용한 ticket 관리
+- reference : [우아한 형제들 - 우린 Git-flow를 사용하고 있어요](http://woowabros.github.io/experience/2017/10/30/baemin-mobile-git-branch-strategy.html)
 
 <br/>
 
 
-### Key Color
+### Key Colors
 
 - ![#2296F6](https://placehold.it/15/2296F6/000000?text=+) #2296F6
 - ![#a9a9a9](https://placehold.it/15/a9a9a9/000000?text=+) #a9a9a9
 - ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+) #FFFFFF
 
-### Sub KeyColor
+### Sub Key Colors
 
 - ![#2DCE77](https://placehold.it/15/2DCE77/000000?text=+) #2DCE77
 - ![#FCAA1A](https://placehold.it/15/FCAA1A/000000?text=+) #FCAA1A
+- ![#F75A4D](https://placehold.it/15/F75A4D/000000?text=+) #F75A4D
 
 <br/>

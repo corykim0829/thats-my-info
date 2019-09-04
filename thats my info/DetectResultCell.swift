@@ -106,7 +106,7 @@ class DetectResultCell: LBTAListCell<Result> {
             if titleLabel.text?.contains("네이버") ?? false {
                 containerView.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.8078431373, blue: 0.4666666667, alpha: 1)
             } else if titleLabel.text?.contains("다음") ?? false {
-                containerView.backgroundColor = #colorLiteral(red: 0.9684513954, green: 0.3513740689, blue: 0.3031639295, alpha: 1)
+                containerView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.3529411765, blue: 0.3019607843, alpha: 1)
             } else if titleLabel.text?.contains("트위터") ?? false {
                 containerView.backgroundColor = #colorLiteral(red: 0.1333333333, green: 0.6941176471, blue: 0.9647058824, alpha: 1)
             } else if titleLabel.text?.contains("빙") ?? false {
